@@ -1,0 +1,2299 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="light">
+<head>
+<meta charset="UTF-8">
+<title>Pediatric Nursing (Practical) 🧸👶 | The Coding Nurse (𝒜ℳℋ)🩺💉</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<style>
+:root[data-theme="light"] {
+  --primary: #0f4c81;
+  --secondary: #0ea5e9;
+  --success: #22c55e;
+  --danger: #dc2626;
+  --bg: #f1f5f9;
+  --card-bg: #ffffff;
+  --soft: #f8fafc;
+  --text: #0f172a;
+  --border: #e5e7eb;
+  --shadow: rgba(0,0,0,.06);
+}
+:root[data-theme="dark"] {
+  --primary: #38bdf8;
+  --secondary: #0ea5e9;
+  --success: #4ade80;
+  --danger: #f87171;
+  --bg: #0f172a;
+  --card-bg: #1e293b;
+  --soft: #0f172a;
+  --text: #f8fafc;
+  --border: #334155;
+  --shadow: rgba(0,0,0,.3);
+}
+
+*{box-sizing:border-box; font-family:"Segoe UI", system-ui, sans-serif; transition: background 0.3s, color 0.3s;}
+body{margin:0; background:var(--bg); color:var(--text)}
+.container{max-width:1000px; margin:auto; padding:16px; position: relative;}
+
+.top-bar {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 6px;
+  margin-top: -36px;
+  margin-bottom: 26px;
+  position: relative;
+  z-index: 10;
+  width: 100%;
+}
+
+.settings-bar {
+  display: flex;
+  gap: 6px;
+}
+
+.setting-btn, .theme-toggle {
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  padding: 8px 12px;
+  border-radius: 50px;
+  cursor: pointer;
+  font-weight: bold;
+  color: var(--text);
+  box-shadow: 0 4px 12px var(--shadow);
+  font-size: 12px;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  white-space: nowrap;
+}
+
+@keyframes popIn {
+  0% { transform: scale(0.95); opacity: 0; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes shake {
+  0%, 100% { transform: translateX(0); }
+  20%, 60% { transform: translateX(-6px); }
+  40%, 80% { transform: translateX(6px); }
+}
+.shake-anim { animation: shake 0.3s ease-in-out; }
+
+.hero{
+  text-align:center;
+  padding:40px 20px 50px 20px;
+  border-radius:24px;
+  background: linear-gradient(135deg, #0f4c81, #0ea5e9);
+  color:#fff;
+  margin-bottom: 20px;
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  box-shadow: 0 10px 25px rgba(15, 76, 129, 0.2);
+}
+.hero h1{margin:0; font-size:34px; font-weight:800}
+.hero h2{ margin-top:6px; font-size:18px; letter-spacing:2px; text-transform:uppercase; color:#bbf7d0;}
+
+.mid-nav{ display:flex; gap:10px; margin:24px 0; padding:6px 4px; overflow-x:auto;}
+.q-btn{
+  min-width:44px; padding:10px 0; border-radius:12px; border:2px solid var(--border);
+  background:var(--card-bg); color: var(--text); font-weight:700; cursor:pointer; transition: all 0.2s ease;
+}
+.q-btn.active{background:#dbeafe; border-color:var(--secondary); color:#0f4c81; transform: scale(1.1); box-shadow: 0 4px 10px rgba(14, 165, 233, 0.2);}
+.q-btn.correct{background:#dcfce7 !important; border-color:var(--success) !important; color: #16a34a !important;}
+.q-btn.wrong{background:#fee2e2 !important; border-color:var(--danger) !important; color: #dc2626 !important;}
+.q-btn.flagged{border-color: #f59e0b !important; background: #fef3c7 !important; color: #b45309 !important;}
+.q-btn.answered-exam { background: #e2e8f0; border-color: #94a3b8; color: #475569; }
+
+.card{
+  background:var(--card-bg); border-radius:22px; padding:28px;
+  box-shadow:0 14px 35px var(--shadow); text-align: center;
+  animation: popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+  border: 1px solid var(--border);
+}
+
+.welcome-msg { 
+  font-size: 26px; 
+  color: #fff; 
+  font-weight: 800; 
+  margin-bottom: 25px; 
+  background: linear-gradient(135deg, #22c55e, #16a34a);
+  padding: 12px 24px;
+  border-radius: 50px;
+  display: inline-block;
+  box-shadow: 0 4px 15px rgba(34, 197, 94, 0.3);
+  letter-spacing: 0.5px;
+}
+
+.salawat-wrapper {
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: center;
+}
+.salawat-card-badge {
+  background: linear-gradient(135deg, rgba(15, 76, 129, 0.08), rgba(14, 165, 233, 0.08));
+  border: 2px dashed var(--primary);
+  color: var(--text);
+  padding: 12px 32px;
+  border-radius: 50px;
+  font-size: 20px;
+  font-weight: 800;
+  letter-spacing: 0.5px;
+  box-shadow: 0 4px 15px var(--shadow);
+  animation: pulseGlow 2.5s infinite alternate;
+  direction: rtl;
+}
+@keyframes pulseGlow {
+  0% { transform: scale(1); box-shadow: 0 4px 15px var(--shadow); }
+  100% { transform: scale(1.03); box-shadow: 0 6px 22px rgba(14, 165, 233, 0.25); }
+}
+:root[data-theme="dark"] .salawat-card-badge {
+  background: linear-gradient(135deg, rgba(56, 189, 248, 0.12), rgba(14, 165, 233, 0.12));
+}
+
+.main-mode-view {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  align-items: center;
+  margin: 20px 0;
+}
+.main-choice-btn {
+  width: 100%;
+  max-width: 450px;
+  padding: 18px 24px;
+  font-size: 17px;
+  font-weight: 700;
+  border-radius: 16px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  direction: rtl;
+  transition: all 0.25s ease;
+  box-shadow: 0 6px 16px var(--shadow);
+  border: 2px solid var(--border);
+  background: var(--card-bg);
+  color: var(--text);
+}
+.main-choice-btn:hover {
+  transform: translateY(-3px);
+}
+.main-choice-btn.lectures-trigger {
+  border-left: 6px solid var(--primary);
+}
+.main-choice-btn.lectures-trigger:hover {
+  border-color: var(--secondary);
+  box-shadow: 0 8px 24px rgba(14, 165, 233, 0.2);
+}
+.main-choice-btn.exam-trigger {
+  border-left: 6px solid #f59e0b;
+}
+.main-choice-btn.exam-trigger:hover {
+  border-color: #f59e0b;
+  box-shadow: 0 8px 24px rgba(245, 158, 11, 0.25);
+}
+
+.dataset-selector {
+ margin: 0 0 18px 0;
+ display: flex;
+ flex-direction: column;
+ gap: 10px;
+ align-items: center;
+}
+.dataset-title {
+ font-size: 15px;
+ font-weight: 800;
+ color: var(--primary);
+ direction: rtl;
+}
+
+.custom-select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  width: 100%;
+  max-width: 450px;
+  padding: 16px 20px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  font-size: 16px;
+  background: var(--soft) url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="%2364748b" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"></polyline></svg>') no-repeat;
+  background-position: left 16px center;
+  color: var(--text);
+  font-weight: 700;
+  direction: rtl;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px var(--shadow);
+}
+.custom-select:focus {
+  outline: none;
+  border-color: var(--secondary);
+  box-shadow: 0 0 0 4px rgba(14, 165, 233, 0.15);
+  background-color: var(--card-bg);
+}
+.custom-select option {
+  font-weight: bold;
+  background: var(--card-bg);
+  color: var(--text);
+}
+
+.custom-select option[value="all"] {
+  color: #16a34a;
+  font-weight: 900;
+}
+
+.mode-selector {
+ margin: 20px 0 25px 0;
+ display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+}
+.mode-option {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--soft);
+  padding: 14px 20px;
+  border-radius: 14px;
+  border: 2px solid var(--border);
+  cursor: pointer;
+  width: 100%;
+  max-width: 450px;
+  text-align: right;
+  direction: rtl;
+  font-weight: 600;
+  transition: all 0.2s;
+}
+.mode-option input { scale: 1.3; cursor: pointer; margin-left: 10px; }
+.mode-option:hover { border-color: var(--secondary); }
+.mode-option:has(input:checked) {
+  border-color: var(--secondary);
+  background: rgba(14, 165, 233, 0.08);
+}
+
+.start-btn {
+  padding: 16px 50px; font-size: 18px; font-weight: 700; color: #fff;
+  background: linear-gradient(135deg, var(--success), #16a34a); border: none; border-radius: 16px;
+  cursor: pointer; transition: all 0.2s ease; width: 100%; max-width: 450px;
+  display: block; margin: 10px auto;
+}
+.start-btn:hover { transform: translateY(-2px); box-shadow: 0 8px 24px rgba(34, 197, 94, 0.35); }
+
+.back-btn {
+  padding: 12px 30px; font-size: 15px; font-weight: 700; color: var(--text);
+  background: var(--soft); border: 2px solid var(--border); border-radius: 14px;
+  cursor: pointer; transition: all 0.2s; width: 100%; max-width: 450px;
+  display: block; margin: 12px auto;
+}
+.back-btn:hover { background: var(--border); transform: translateY(-1px); }
+
+.resume-btn {
+  padding: 14px 30px; font-size: 16px; font-weight: 700; color: var(--primary);
+  background: transparent; border: 2px solid var(--primary); border-radius: 16px;
+  cursor: pointer; transition: all 0.2s ease; display: none; width: 100%; max-width: 450px;
+  display: block; margin: 12px auto;
+}
+.resume-btn:hover { background: var(--primary); color: #fff; }
+
+.timer-box {
+  display: none;
+  background: var(--card-bg);
+  border: 2px solid var(--border);
+  padding: 8px 20px;
+  border-radius: 50px;
+  font-weight: 800;
+  color: var(--danger);
+  box-shadow: 0 4px 12px var(--shadow);
+  text-align: center;
+  margin: 10px auto 20px auto;
+  width: fit-content;
+  font-size: 18px;
+  letter-spacing: 1px;
+}
+
+.progress{ height:10px; background:var(--border); border-radius:999px; overflow:hidden; margin-bottom:18px;}
+.progress span{
+  display:block; height:100%; width:0%;
+  background:linear-gradient(90deg, var(--secondary), var(--success));
+  transition: width 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.question-box{
+  background: var(--soft);
+  border-left:6px solid var(--secondary); border-radius:18px; padding:22px; text-align: left;
+}
+
+.q-tools-bar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 16px;
+  padding-bottom: 10px;
+  border-bottom: 1px dashed var(--border);
+}
+.q-badge {
+  background: var(--primary);
+  color: #fff;
+  padding: 4px 12px;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: bold;
+}
+.q-actions {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.question { font-size:19px; font-weight:600; line-height: 1.5; width: 100%; display: block; word-wrap: break-word; }
+
+.kw-highlight {
+  background-color: #fef08a;
+  color: #854d0e;
+  padding: 2px 6px;
+  border-radius: 6px;
+  font-weight: 900;
+  text-decoration: underline;
+  text-decoration-color: #ca8a04;
+  text-decoration-thickness: 3px;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+:root[data-theme="dark"] .kw-highlight {
+  background-color: #713f12;
+  color: #fef08a;
+  text-decoration-color: #eab308;
+}
+
+#speakBtn, #stopSpeakBtn, #translateBtn { background: none; border: none; font-size: 20px; cursor: pointer; padding: 0; line-height: 1; transition: transform 0.2s; }
+#speakBtn:hover, #stopSpeakBtn:hover, #translateBtn:hover { transform: scale(1.2); }
+
+#flagBtn { background: none; border: none; font-size: 22px; cursor: pointer; padding: 0; line-height: 1; transition: transform 0.2s; filter: grayscale(1); }
+#flagBtn:hover { transform: scale(1.2); }
+#flagBtn.active { filter: grayscale(0) drop-shadow(0 0 4px #f59e0b) !important; transform: scale(1.1); }
+
+.translation-box {
+  display: none;
+  margin-top: 18px;
+  padding: 16px;
+  background: var(--card-bg);
+  border-right: 4px solid var(--secondary);
+  border-radius: 12px;
+  direction: rtl;
+  text-align: right;
+  box-shadow: inset 0 2px 6px var(--shadow), 0 2px 8px var(--shadow);
+  animation: popIn 0.3s ease;
+}
+.trans-title { font-weight: bold; color: var(--secondary); margin-bottom: 8px; font-size: 14px; }
+.trans-q { font-size: 16px; font-weight: 600; margin-bottom: 12px; line-height: 1.5; color: var(--text); }
+.trans-o-list { margin: 0; padding-right: 20px; font-size: 15px; color: #475569; line-height: 1.7; }
+
+.options button{
+  width:100%; padding:16px; margin-bottom:12px; border-radius:14px;
+  border:2px solid var(--border); background:var(--card-bg); color: var(--text);
+  font-size:16px; text-align: left; cursor:pointer; transition: all 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+.options button:not(:disabled):hover {
+  transform: translateY(-2px); border-color: var(--secondary);
+  box-shadow: 0 6px 16px rgba(14, 165, 233, 0.15);
+}
+.options button.correct{background:#ecfdf5 !important; border-color:var(--success) !important; color: #065f46 !important; font-weight: 700;}
+.options button.wrong{background:#fef2f2 !important; border-color:var(--danger) !important; color: #991b1b !important; font-weight: 700;}
+.options button.selected-exam { background: #e0f2fe !important; border-color: var(--secondary) !important; color: #0369a1 !important; font-weight: 700; }
+
+.nav{ display:flex; gap:12px; margin-top:26px;}
+.nav button{
+  flex:1; padding:14px; border-radius:14px; font-size:15px; font-weight:700; cursor:pointer; transition: all 0.2s;
+}
+.prev{background:var(--card-bg); border:2px solid var(--border); color: var(--text);}
+.prev:hover{background: var(--soft); transform: translateY(-1px);}
+.next{ border:none; color:#fff; background:linear-gradient(135deg,var(--primary),var(--secondary));}
+.next:hover{opacity: 0.95; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(15, 76, 129, 0.2);}
+
+.extra-nav { display: flex; gap: 12px; margin-top: 12px; }
+.extra-nav button { flex: 1; padding: 12px; border-radius: 14px; font-size: 14px; font-weight: 700; cursor: pointer; transition: all 0.2s; }
+.home-btn { background: var(--card-bg); border: 2px solid var(--border); color: var(--text); }
+.home-btn:hover { background: var(--soft); transform: translateY(-1px); }
+.finish-btn { background: linear-gradient(135deg, var(--danger), #b91c1c); border: none; color: #fff; }
+.finish-btn:hover { opacity: 0.95; transform: translateY(-1px); box-shadow: 0 4px 12px rgba(220, 38, 38, 0.2); }
+
+.result-msg { font-size: 18px; margin-bottom: 10px; line-height: 1.6; }
+.duck-msg { display: block; margin-top: 15px; font-weight: 800; color: var(--primary); font-size: 20px;}
+.stats-container {
+  display: flex; justify-content: space-around; background: var(--soft);
+  padding: 16px; border-radius: 16px; margin: 20px 0; border: 1px solid var(--border);
+}
+.stat-box { text-align: center; }
+.stat-val { font-size: 24px; font-weight: 800; }
+.stat-lbl { font-size: 13px; color: #64748b; margin-top: 4px; }
+.score{ font-size:48px; font-weight:900; color:var(--success); margin: 10px 0; text-shadow: 0 4px 12px rgba(34, 197, 94, 0.2);}
+.badge-title { font-size: 22px; font-weight: 800; margin-bottom: 15px; text-transform: uppercase; letter-spacing: 0.5px; }
+
+.result-actions-container {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  max-width: 400px;
+  margin: 20px auto 0 auto;
+}
+.restart{
+  padding:14px 28px; border:none; border-radius:16px; font-size:16px; font-weight:700;
+  cursor:pointer; color:#fff; background:linear-gradient(135deg,#0f4c81,#0ea5e9); transition: all 0.2s;
+  width: 100%;
+}
+.restart:hover{transform: translateY(-2px); box-shadow: 0 6px 18px rgba(15, 76, 129, 0.35);}
+
+.review-btn {
+  padding: 14px 28px; border: 2px solid var(--success); border-radius: 16px; font-size: 16px; font-weight: 700;
+  cursor: pointer; color: var(--success); background: transparent; transition: all 0.2s;
+  width: 100%; display: none;
+}
+.review-btn:hover { background: var(--success); color: #fff; transform: translateY(-2px); }
+
+.download-btn {
+  padding: 14px 28px; border: 2px solid var(--primary); border-radius: 16px; font-size: 16px; font-weight: 700;
+  cursor: pointer; color: var(--primary); background: transparent; transition: all 0.2s;
+  width: 100%;
+}
+.download-btn:hover { background: var(--primary); color: #fff; transform: translateY(-2px); }
+</style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="hero">
+        <h1>Pediatric Nursing (Practical) 🧸👶</h1>
+        <h2>Question app</h2>
+        <p>Prepared by <strong>The Coding Nurse (𝒜ℳℋ)🩺💉</strong></p>
+    </div>
+
+    <div class="top-bar">
+        <div class="settings-bar">
+            <button class="setting-btn" id="soundToggle" onclick="toggleSound()"><span>🔊</span> Sound On</button>
+            <button class="setting-btn" id="vibeToggle" onclick="toggleVibration()"><span>📳</span> Vibe On</button>
+        </div>
+        <button class="theme-toggle" onclick="toggleTheme()"><span>🌓</span> Dark Mode</button>
+    </div>
+
+    <div class="card" id="startCard">
+        
+        <div class="salawat-wrapper">
+            <div class="salawat-card-badge">✨ صلي علي النبي 🤍🐣✨</div>
+        </div>
+        
+        <div id="mainModeMenu" class="main-mode-view">
+            <button class="main-choice-btn lectures-trigger" onclick="selectRootMode('lectures')">
+                <span>📌 📚 أسئله علي المحاضرات </span>
+                <span>⬅️</span>
+            </button>
+            <button class="main-choice-btn exam-trigger" onclick="selectRootMode('comprehensive_exam')">
+                <span>📌 🏆 وضع الامتحان الشامل </span>
+                <span>⭐</span>
+            </button>
+        </div>
+
+        <div id="lecturesSetupContainer" style="display: none;">
+            <div id="highScoreView" style="display:none; font-weight:bold; margin:0 auto 16px auto; color:var(--success); font-size:14px; background:rgba(34, 197, 94, 0.08); padding:8px 16px; border-radius:50px; border:1px dashed var(--success); width:fit-content; direction:rtl;">
+                🏆 أعلى سكور: <span id="highScoreVal">0%</span>
+            </div>
+
+            <div class="dataset-selector">
+                <div class="dataset-title">: Choose the lecture first</div>
+                <select id="datasetDrawer" class="custom-select" onchange="setDataset(this.value)">
+                    <option value="place1">1. Pediatric Physical examination</option>
+                    <option value="place2">2. Growth measurements</option>
+                    <option value="place3">3. Physiologic measurements (vital signs)</option>
+                    <option value="place4">4. Baby Bath / Cord Care</option>
+                    <option value="place5">5. Administration of Medications</option>
+                    <option value="place6">6. Formula Feeding</option>
+                    <option value="place7">7. Gavage Feeding</option>
+                    <option value="place8">8. Gestational age</option>
+                    <option value="place9">9. Incubator care</option>
+                    <option value="place10">10. Neonatal Cardiopulmonary Resuscitation (NCPR)</option>
+                    <option value="place11">11. Oxygen therapy</option>
+                    <option value="place12">12. Suctioning</option>
+                    <option value="place13">13. Chest physiotherapy</option>
+                    <option value="place14">14. Colostomy Care</option>
+                    <option value="place15">15. Immunizations</option>
+                </select>
+            </div>
+
+            <div class="mode-selector">
+                <label class="mode-option">
+                    <input type="radio" name="quizMode" value="sequential" onchange="setMode('sequential')">
+                    <span>🔢 وضع الترتيب (أسئلة واختيارات مرتبة بدون عشوائية)</span>
+                </label>
+                <label class="mode-option">
+                    <input type="radio" name="quizMode" value="study" checked onchange="setMode('study')">
+                    <span>📖 وضع المذاكرة (عشوائي + تصحيح فوري للمعلومات)</span>
+                </label>
+                <label class="mode-option">
+                    <input type="radio" name="quizMode" value="memorize" onchange="setMode('memorize')">
+                    <span>🧠 وضع البصمجة (كشف الإجابة الصحيحه للمراجعه)</span>
+                </label>
+                <label class="mode-option">
+                    <input type="radio" name="quizMode" value="exam" onchange="setMode('exam')">
+                    <span>⏳ وضع الامتحان (عشوائي + تايمر وبدون كشف الإجابات)</span>
+                </label>
+                <label class="mode-option">
+                    <input type="radio" name="quizMode" value="bookmark" onchange="setMode('bookmark')">
+                    <span>🔖 مراجعة الأسئلة المميزة فقط</span>
+                </label>
+            </div>
+
+            <button class="start-btn" onclick="startQuiz()">Start 🚀</button>
+            <button class="back-btn" onclick="selectRootMode('main')">⬅️ العودة للرئيسية</button>
+            <button class="resume-btn" id="resumeBtn" onclick="resumeQuiz()">استكمال محاولة الحل السابقة 🔄</button>
+        </div>
+    </div>
+
+    <div id="quizContainer" style="display:none">
+        <div class="timer-box" id="timerBox">⏳ المتبقي: <span id="timerDisplay">00:00</span></div>
+        <div class="mid-nav" id="midNav"></div>
+        <div class="card" id="quizCard">
+            <div class="progress"><span id="progressBar"></span></div>
+            <div class="question-box">
+                
+                <div class="q-tools-bar">
+                    <span class="q-badge" id="qIndexBadge">Question</span>
+                    <div class="q-actions">
+                        <button id="translateBtn" onclick="toggleTranslation()" title="ترجمة السؤال للعربية" style="display:none;">🌍</button>
+                        <button id="speakBtn" onclick="speakQuestion()" title="بدء النطق من أول وجديد">🔊</button>
+                        <button id="stopSpeakBtn" onclick="toggleSpeechPause()" title="إيقاف مؤقت" style="display:none;">⏸️</button>
+                        <button id="flagBtn" onclick="toggleFlag()" title="Bookmark Question">🔖</button>
+                    </div>
+                </div>
+
+                <div class="question" id="question"></div>
+                
+                <div class="translation-box" id="translationBox">
+                    <div class="trans-title">🎯 الترجمة العربية:</div>
+                    <div class="trans-q" id="transQText"></div>
+                    <ul class="trans-o-list" id="transOList"></ul>
+                </div>
+
+                <div class="options" id="options" style="margin-top: 20px;"></div>
+            </div>
+            
+            <div class="nav">
+                <button class="prev" onclick="prevQ()">⬅ Previous</button>
+                <button class="next" onclick="nextQ()">Next ➡</button>
+            </div>
+            
+            <div class="extra-nav">
+                <button class="home-btn" onclick="goToHome()">🏠 الرئيسية (حفظ)</button>
+                <button class="finish-btn" onclick="showResult()">📊 إنهاء وعرض النتيجة</button>
+            </div>
+        </div>
+    </div>
+
+    <div class="card result" id="resultCard" style="display:none">
+        <div class="result-msg" style="color: var(--primary); font-weight: bold;">✨🤍 صلي علي النبي ✨ </div>
+        <div class="result-msg">
+            متزعلش لو نتيجة حلك مكنتش أحسن حاجه خليك ديما فاكر ان لسه فيه فرصه تحاول سمي الله وحاول تاني
+            <span class="duck-msg">( 🐥 أشطر كتكوت يخواشي )</span>
+        </div>
+        
+        <div class="stats-container">
+            <div class="stat-box">
+                <div class="stat-val" id="statCorrect" style="color: var(--success);">0</div>
+                <div class="stat-lbl">Correct ✅</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-val" id="statWrong" style="color: var(--danger);">0</div>
+                <div class="stat-lbl">Wrong ❌</div>
+            </div>
+            <div class="stat-box">
+                <div class="stat-val" id="statRatio" style="color: var(--secondary);">0%</div>
+                <div class="stat-lbl">Accuracy 🎯</div>
+            </div>
+        </div>
+
+        <h2>Final Result</h2>
+        <div class="score" id="scoreText"></div>
+        <div class="badge-title" id="badgeTitle"></div>
+        
+        <div class="result-actions-container">
+            <button class="review-btn" id="reviewBtn" onclick="startReview()">🔁 مراجعة الأخطاء فقط</button>
+            <button class="download-btn" id="downloadBtn" onclick="downloadResultCard()">📸 تحميل النتيجة كصورة</button>
+            <button class="restart" onclick="restartQuiz()">🔄 Restart Quiz</button>
+        </div>
+    </div>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.3/dist/confetti.browser.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+
+<script>
+const datasets = {
+  "place1": [
+   {
+      "q": "If an infant is uncooperative during the examination, the nurse should:",
+      "o": ["Postpone the examination for one week", "Examine the infant on the parent's lap", "Omit the examination", "Restrain the infant on the examination table"],
+      "a": 1,
+      "trQ": "إذا كان الرضيع غير متعاون أثناء الفحص، يجب على الممرضة:",
+      "trO": ["تأجيل الفحص لمدة أسبوع", "فحص الرضيع على حجر الوالدين", "إلغاء الفحص", "تقييد الرضيع على طاولة الفحص"]
+    },
+    {
+      "q": "Subjective data should be documented:",
+      "o": ["In medical terminology only", "By the nurse's interpretation", "In the patient's own words", "After laboratory results are available"],
+      "a": 2,
+      "trQ": "يجب توثيق البيانات الذاتية:",
+      "trO": ["بالمصطلحات الطبية فقط", "حسب تفسير الممرضة", "بكلمات المريض الخاصة", "بعد توفر نتائج المعمل"]
+    },
+    {
+      "q": "Physical assessment is best defined as a systematic data collection method that uses the senses of:",
+      "o": ["Smell and taste only", "Sight, hearing, smell, and touch", "Sight and taste only", "Hearing and touch only"],
+      "a": 1,
+      "trQ": "يُعرف التقييم الجسدي بأنه طريقة منهجية لجمع البيانات تستخدم حواس:",
+      "trO": ["الشم والتذوق فقط", "البصر والسمع والشم واللمس", "البصر والتذوق فقط", "السمع واللمس فقط"]
+    },
+    {
+      "q": "How to collect all data includes Health Interview (history), Physical Examination, Laboratory or Diagnostic Examination, and:",
+      "o": ["X-ray only", "Blood test only", "Records Review", "Family interview"],
+      "a": 2,
+      "trQ": "كيفية جمع كل البيانات تشمل المقابلة الصحية (التاريخ المرضي)، والفحص الجسدي، والفحص المخبري أو التشخيصي، و:",
+      "trO": ["الأشعة السينية فقط", "فحص الدم فقط", "مراجعة السجلات", "مقابلة العائلة"]
+    },
+    {
+      "q": "When infant is quiet, auscultate heart, lungs, and:",
+      "o": ["head", "abdomen", "limbs", "skin"],
+      "a": 1,
+      "trQ": "عندما يكون الرضع هادئين، افحص بالسماعة القلب والرئتين و:",
+      "trO": ["الرأس", "البطن", "الأطراف", "الجلد"]
+    },
+    {
+      "q": "Times of physical examination for the 1st year is:",
+      "o": ["Every 3 months", "Every month", "Every 6 months", "Yearly"],
+      "a": 1,
+      "trQ": "أوقات الفحص الجسدي خلال السنة الأولى هي:",
+      "trO": ["كل 3 شهور", "كل شهر", "كل 6 شهور", "سنوياً"]
+    },
+    {
+      "q": "Times of physical examination for the 2nd and 3rd year is:",
+      "o": ["Every month", "Every 3 month", "Every 6 month", "Yearly"],
+      "a": 0,
+      "trQ": "أوقات الفحص الجسدي للسنة الثانية والثالثة هي:",
+      "trO": ["كل شهر", "كل 3 شهور", "كل 6 شهور", "سنوياً"]
+    },
+    {
+      "q": "Times of physical examination for the 4th and 5th year is:",
+      "o": ["Every 3 month", "Every 6 month", "Every month", "Yearly"],
+      "a": 1,
+      "trQ": "أوقات الفحص الجسدي للسنة الرابعة والخامسة هي:",
+      "trO": ["كل 3 شهور", "كل 6 شهور", "كل شهر", "سنوياً"]
+    },
+    {
+      "q": "Times of physical examination yearly from the:",
+      "o": ["4th year", "6th year", "3rd year", "1st year"],
+      "a": 1,
+      "trQ": "أوقات الفحص الجسدي سنوياً من:",
+      "trO": ["السنة الرابعة", "السنة السادسة", "السنة الثالثة", "السنة الأولى"]
+    },
+    {
+      "q": "For older children examination guidelines, if cooperative, proceed with:",
+      "o": ["toe-to-head", "abdomen first", "head-to-toe", "chest first"],
+      "a": 2,
+      "trQ": "بالنسبة لإرشادات فحص الأطفال الأكبر سناً، إذا كان متعاوناً، ابدأ بـ:",
+      "trO": ["من القدمين إلى الرأس", "البطن أولاً", "من الرأس إلى القدمين", "الصدر أولاً"]
+    },
+    {
+      "q": "Brief statement of primary problem (including duration) that caused family to seek medical attention is:",
+      "o": ["History of Present Illness", "Chief Complaint", "Past Medical History", "Family History"],
+      "a": 1,
+      "trQ": "بيان موجز للمشكلة الأساسية (بما في ذلك المدة) التي دفعت العائلة لطلب الرعاية الطبية هو:",
+      "trO": ["تاريخ المرض الحالي", "الشكوى الرئيسية", "التاريخ الطبي السابق", "التاريخ العائلي"]
+    },
+    {
+      "q": "Age, sex, race, and other important identifying information about patient is part of:",
+      "o": ["Chief Complaint", "Feeding History", "History of Present Illness", "Developmental History"],
+      "a": 2,
+      "trQ": "العمر والجنس والعرق والمعلومات التعريفية الهامة الأخرى عن المريض هي جزء من:",
+      "trO": ["الشكوى الرئيسية", "تاريخ التغذية", "تاريخ المرض الحالي", "التاريخ التنموي"]
+    },
+    {
+      "q": "There are four techniques used in physical assessment and these are:",
+      "o": ["Inspection, palpation, suction and oxygen", "Inspection, palpation, percussion and auscultation", "Measurement, weighing, palpation and auscultation", "Observation, interview, percussion and check"],
+      "a": 1,
+      "trQ": "هناك أربع تقنيات تستخدم في التقييم الجسدي وهي:",
+      "trO": ["المعاينة، والجس، والشفط، والأكسجين", "المعاينة، والجس، والقرع، والتصتُّت (السماعة)", "القياس، والوزن، والجس، والتصتُّت", "الملاحظة، والمقابلة، والقرع، والفحص"]
+    },
+    {
+      "q": "Inspection means:",
+      "o": ["use hands only", "use eyes only", "use stethoscope", "use percussion hammer"],
+      "a": 1,
+      "trQ": "المعاينة تعني:",
+      "trO": ["استخدام اليدين فقط", "استخدام العينين فقط", "استخدام السماعة الطبية", "استخدام مطرقة القرع"]
+    },
+    {
+      "q": "Palpation means:",
+      "o": ["use eyes only", "listen with stethoscope", "use tip of fingers and the palm of the hand", "tap on body surface"],
+      "a": 2,
+      "trQ": "الجس يعني:",
+      "trO": ["استخدام العينين فقط", "الاستماع بالسماعة", "استخدام أطراف الأصابع وراحة اليد", "القرع على سطح الجسم"]
+    },
+    {
+      "q": "Percussion sound over solid organ is:",
+      "o": ["Tympanic", "Dullness", "Resonant", "Hyperresonant"],
+      "a": 1,
+      "trQ": "صوت القرع فوق عضو صلِب هو:",
+      "trO": ["طبلي (Tympanic)", "مكتوم (Dullness)", "رنان (Resonant)", "رنان عالي"]
+    },
+    {
+      "q": "Percussion sound over hollow organ is:",
+      "o": ["Dullness", "Tympanic", "Soft", "Harsh"],
+      "a": 1,
+      "trQ": "صوت القرع فوق عضو مجوف هو:",
+      "trO": ["مكتوم (Dullness)", "طبلي (Tympanic)", "ناعم", "قاسي"]
+    },
+    {
+      "q": "Auscultation is performed using:",
+      "o": ["Flashlight", "Stethoscope", "Tongue depressor", "Measuring tape"],
+      "a": 1,
+      "trQ": "التصتُّت (السماعة) يتم إجراؤه باستخدام:",
+      "trO": ["كشاف الإضاءة", "السماعة الطبية", "خافض اللسان", "شريط القياس"]
+    },
+    {
+      "q": "Spoon nail is linked to:",
+      "o": ["calcium deficiency", "vitamin D deficiency", "iron deficiency", "protein deficiency"],
+      "a": 2,
+      "trQ": "الأظافر على شكل ملعقة (Spoon nail) ترتبط بـ:",
+      "trO": ["نقص الكالسيوم", "نقص فيتامين د", "نقص الحديد", "نقص البروتين"]
+    },
+    {
+      "q": "Anterior fontanel closed at:",
+      "o": ["0-2 M", "6-8 weeks", "18-24 M", "12 M"],
+      "a": 2,
+      "trQ": "اليافوخ الأمامي ينغلق في حدود:",
+      "trO": ["2-0 شهر", "6-8 أسابيع", "18-24 شهراً", "12 شهراً"]
+    },
+    {
+      "q": "Posterior fontanel closed at:",
+      "o": ["18-24 M", "0-2 M", "36 M", "12 M"],
+      "a": 1,
+      "trQ": "اليافوخ الخلفي ينغلق في حدود:",
+      "trO": ["18-24 شهراً", "2-0 شهر", "36 شهراً", "12 شهراً"]
+    },
+    {
+      "q": "To determine the condition of the lungs by assessing the flow air through the bronchial tree and evaluating the presence of fluid or solid obstruction in the lung structure is called:",
+      "o": ["Inspection", "Palpation", "Auscultation", "Percussion"],
+      "a": 2,
+      "trQ": "تحديد حالة الرئتين عن طريق تقييم تدفق الهواء عبر شجرة القصبات الهوائية وتقييم وجود سوائل أو انسداد صلِب في بنية الرئة يسمى:",
+      "trO": ["المعاينة", "الجس", "التصتُّت (السماعة)", "القرع"]
+    },
+    {
+      "q": "The point of maximum impulse (PMI) is located lateral to the left mid-clavicular line in 4th intercostal space in children under:",
+      "o": ["5 years", "10 years", "7 years", "3 years"],
+      "a": 2,
+      "trQ": "تقع نقطة أقصى نبض (PMI) بوجه جانبي لخط منتصف الترقوة الأيسر في الفضاء الوربي الرابع لدى الأطفال أقل من:",
+      "trO": ["5 سنوات", "10 سنوات", "7 سنوات", "3 سنوات"]
+    },
+    {
+      "q": "Examination of the heart involves the skills of inspection, palpation and:",
+      "o": ["percussion", "suction", "auscultation", "measurement"],
+      "a": 2,
+      "trQ": "فحص القلب يتضمن مهارات المعيانية، والجس، و:",
+      "trO": ["القرع", "الشفط", "التصتُّت (السماعة)", "القياس"]
+    },
+    {
+      "q": "Normally, two sounds S1 and S2 are heard, which correspond respectively to the familiar sound:",
+      "o": ["tic tac", "lub dub", "beep boop", "click clack"],
+      "a": 1,
+      "trQ": "عادة، يُسمع صوتان S1 و S2، واللذان يتوافقان على التوالي مع الصوت المألوف:",
+      "trO": ["تيك تاك", "لوب دب (lub dub)", "بيب بوب", "كليك كلاك"]
+    },
+    {
+      "q": "Structure of the Musculoskeletal System includes bones, joints, skeletal muscles, and:",
+      "o": ["Skin and nails only", "Supportive connective tissue", "Nerves only", "Blood vessels only"],
+      "a": 1,
+      "trQ": "بنية الجهاز الهيكلي العضلي تشمل العظام والمفاصل والعضلات الهيكلية و:",
+      "trO": ["الجلد والأظافر فقط", "الأنسجة الضامة الداعمة", "الأعصاب فقط", "الأوعية الدموية فقط"]
+    },
+    {
+      "q": "Single crease across entire palm associated with Down syndrome is called:",
+      "o": ["Spoon nail", "Simian crease", "Clubbing nail", "Lanugo"],
+      "a": 1,
+      "trQ": "الثنية المفردة عبر راحة اليد المرتبطة بمتلازمة داون تسمى:",
+      "trO": ["ظفر الملعقة", "ثنية سيميان (Simian crease)", "تعقّف الأظافر", "شعر اللانوجو"]
+    },
+    {
+      "q": "Extra digits is known as:",
+      "o": ["Syndactyly", "Spina bifida", "Polydactyly", "Simian crease"],
+      "a": 2,
+      "trQ": "زيادة الأصابع تُعرف بـ:",
+      "trO": ["ارتفاق الأصابع", "السنسنة المشقوقة", "كثرة الأصابع (Polydactyly)", "ثنية سيميان"]
+    },
+    {
+      "q": "Fused digits is known as:",
+      "o": ["Polydactyly", "Syndactyly", "Simian crease", "Milia"],
+      "a": 1,
+      "trQ": "التصاق الأصابع يُعرف بـ:",
+      "trO": ["كثرة الأصابع", "ارتفاق الأصابع (Syndactyly)", "ثنية سيميان", "الدخينات"]
+    },
+    {
+      "q": "Signs of hip dislocation include:",
+      "o": ["Spoon nail & Clubbing", "Simian crease", "Hip clicks & Asymmetric gluteal folds", "Polydactyly"],
+      "a": 2,
+      "trQ": "علامات خلع الورق تشمل:",
+      "trO": ["أظافر الملعقة والتعقّف", "ثنية سيميان", "طرقعة الورك والثنيات الأليوية غير المتماثلة", "كثرة الأصابع"]
+    },
+    {
+      "q": "General body reflexes include oral reflex, Moro reflex, palmar grasp, plantar grasp, and:",
+      "o": ["Spoon nail reflex", "Walking/stepping, tonic neck, and Babinski's reflex", "Inspection reflex", "Percussion reflex"],
+      "a": 1,
+      "trQ": "المنعكسات العامة للجسم تشمل منعكس الفم، مورو، القبض الراحي، القبض الأخمصي، و:",
+      "trO": ["منعكس أظافر الملعقة", "المشي/الخطوات، الرقبة التوترية، ومنعكس بابينسكي", "منعكس المعاينة", "منعكس القرع"]
+    },
+    {
+      "q": "Startle/moro reflex, tonic neck reflex, stepping reflex, and grasp reflex are all part of assessing:",
+      "o": ["Cardiovascular system", "Nervous system (Assess Reflexes)", "Respiratory system", "Gastrointestinal system"],
+      "a": 1,
+      "trQ": "منعكس مورو، منعكس الرقبة التوترية، منعكس الخطوات، ومنعكس القبض كلها جزء من تقييم:",
+      "trO": ["الجهاز الدوري", "الجهاز العصبي (تقييم المنعكسات)", "الجهاز التنفسي", "الجهاز الهضمي"]
+    },
+    {
+      "q": "Hair loss is common in:",
+      "o": ["hypothyroidism", "hyperthyroidism", "protein malnutrition", "iron deficiency"],
+      "a": 1,
+      "trQ": "تساقط الشعر شايع في:",
+      "trO": ["قصور الغدة الدرقية", "فرط نشاط الغدة الدرقية", "سوء تغذية البروتين", "نقص الحديد"]
+    },
+    {
+      "q": "Pinna is pulled down and back to straighten ear canal in children under:",
+      "o": ["5 years", "7 years", "3 years", "1 year"],
+      "a": 2,
+      "trQ": "يتم سحب صيوان الأذن للأسفل والخلف لتعديل قناة الأذن في الأطفال أقل من:",
+      "trO": ["5 سنوات", "7 سنوات", "3 سنوات", "سنة واحدة"]
+    },
+    {
+      "q": "Edema is seen around eye, face, legs and scrotum or labia in:",
+      "o": ["adolescents", "newborn", "school-age children", "toddlers"],
+      "a": 1,
+      "trQ": "يُرى التورم (الوذمة) حول العين، الوجه، الساقين، وكيس الصفن أو الشفرين لدى:",
+      "trO": ["المراهقين", "حديثي الولادة", "أطفال سن المدرسة", "الأطفال الصغار"]
+    },
+    {
+      "q": "For infants physical examination guidelines, avoid touching painful areas until confidence has been gained.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "بالنسبة لإرشادات الفحص الجسدي للرضع، تجنب لمس المناطق المؤلمة حتى يتم اكتساب الثقة.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "Subjective data should be documented in patient's own words.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "البيانات الذاتية يجب أن توثق بكلمات المريض الخاصة.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "Objective data should be specific and obtained through physical examination.",
+      "o": ["False", "True"],
+      "a": 1,
+      "trQ": "البيانات الموضوعية يجب أن تكون محددة وتُحصل من خلال الفحص الجسدي.",
+      "trO": ["خطأ", "صح"]
+    },
+    {
+      "q": "Usually history taking is completed before physical examination.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "عادة يتم إكمال اخذ التاريخ المرضي قبل الفحص الجسدي.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "At birth, skin is bright red, puffy, smooth.",
+      "o": ["False", "True"],
+      "a": 1,
+      "trQ": "عند الولادة، يكون الجلد أحمر زاهياً، منتفخاً، وناعماً.",
+      "trO": ["خطأ", "صح"]
+    },
+    {
+      "q": "By the second to third day, skin is dark pink and dry.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "بحلول اليوم الثاني إلى الثالث، يصبح الجلد وردياً داكناً وجافاً.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "Vernix caseosa is a soft yellowish cream, which covers the neonates at birth to protect the skin from infection.",
+      "o": ["False", "True"],
+      "a": 1,
+      "trQ": "الطلاء الدهني هو كريم أصفر ناعم يغطي حديثي الولادة عند الولادة لحماية الجلد من العدوى.",
+      "trO": ["خطأ", "صح"]
+    },
+    {
+      "q": "Lanugo hair is a long soft growth of fine hair observed on the shoulders, back, extremities and forehead.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "شعر اللانوجو هو نمو ناعم وطويل من الشعر الدقيق يلاحظ على الكتفين والظهر والأطراف والجبهة.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "Milia is small pinpoint white or yellow spots, common on the nose, forehead, cheeks, and chin.",
+      "o": ["False", "True"],
+      "a": 1,
+      "trQ": "الدخينات هي بقع بيضاء أو صفراء صغيرة دقيقة شائعة على الأنف والجبهة والخدين والذقن.",
+      "trO": ["خطأ", "صح"]
+    },
+    {
+      "q": "Clubbing nail is a sign of low oxygen in blood, lung disease, cardiac disease.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "تعقّف الأظافر هو علامة على انخفاض الأكسجين في الدم، أمراض الرئة، وأمراض القلب.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "Anterior fontanel is diamond shaped and located at the junction of the two parietal and two frontal bones.",
+      "o": ["False", "True"],
+      "a": 1,
+      "trQ": "اليافوخ الأمامي معين الشكل ويقع عند تقاطع العظمين الجداريين والعظمين الجبهيين.",
+      "trO": ["خطأ", "صح"]
+    },
+    {
+      "q": "Sunken fontanel means dehydration.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "اليافوخ الغائر يعني الجفاف.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "Bronchial breath sounds are heard only over trachea near suprasternal notch.",
+      "o": ["False", "True"],
+      "a": 1,
+      "trQ": "أصوات التنفس القصبية تُسمع فقط فوق القصبة الهوائية قرب الثلمة فوق القصية.",
+      "trO": ["خطأ", "صح"]
+    },
+    {
+      "q": "Crackles adventitious sound results from the passage of air through fluid or moisture.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "صوت الخروخشة الإضافي ينتج عن مرور الهواء عبر السوائل أو الرطوبة.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "Pleural friction rub occurs when inflamed pleural surface come together during inspiration.",
+      "o": ["False", "True"],
+      "a": 1,
+      "trQ": "احتكاك الغشاء البلوري يحدث عندما تتقارب أسطح الغشاء البلوري الملتهبة أثناء الشهيق.",
+      "trO": ["خطأ", "صح"]
+    }
+  ],
+  "place2": [
+   {
+      "q": "To evaluate the child's health status, detect any marked loss or gain in weight, and provide a basic idea for determining the infant status and medication dosage is the objective of:",
+      "o": ["Length measurement", "Head circumference", "Weight measurement", "Chest circumference"],
+      "a": 2,
+      "trQ": "تقييم الحالة الصحية للطفل، واكتشاف أي نقص أو زيادة ملحوظة في الوزن، وتوفير فكرة أساسية لتحديد حالة الرضيع وجرعة الدواء هي أهداف:",
+      "trO": ["قياس الطول", "محيط الرأس", "قياس الوزن", "محيط الصدر"]
+    },
+    {
+      "q": "When weighing an infant, hold one hand over the body of the infant (not touching him) for:",
+      "o": ["keeping him warm", "measuring length", "reasons of safety", "calming the parents"],
+      "a": 2,
+      "trQ": "عند وزن الرضع، ضع يداً واحدة فوق جسم الرضيع (دون لمسه) لأسباب تتعلق بـ:",
+      "trO": ["إبقائه دافئاً", "قياس الطول", "السلامة والأمان", "تهدئة الوالدين"]
+    },
+    {
+      "q": "Weight measurement should be measured to the nearest 10gm for infant & 100gm for:",
+      "o": ["newborns only", "children", "adolescents only", "infants under 1 month"],
+      "a": 1,
+      "trQ": "يجب قياس الوزن لأقرب 10 جرام للرضيع و 100 جرام لـ:",
+      "trO": ["حديثي الولادة فقط", "الأطفال الأكبر سناً", "المراهقين فقط", "الرضع أقل من شهر"]
+    },
+    {
+      "q": "The term length refers to taking measurement when children are supine (recumbent length) until children are:",
+      "o": ["12 months old", "24 months old", "36 months old", "6 months old"],
+      "a": 1,
+      "trQ": "مصطلح الطول (Length) يشير إلى أخذ القياس عندما يكون الأطفال مستلقين (طول الرقود) حتى سن:",
+      "trO": ["12 شهراً", "24 شهراً", "36 شهراً", "6 أشهر"]
+    },
+    {
+      "q": "When measuring infant length in recumbent position, hold head in midline and grasp knee and push gently toward table to:",
+      "o": ["check the abdomen", "bend the knees", "measure the chest", "fully extend legs"],
+      "a": 3,
+      "trQ": "عند قياس طول الرضيع في وضعية الرقود، امسك الرأس في خط المنتصف وامسك الركبة واضغط برفق نحو الطاولة لـ:",
+      "trO": ["فحص البطن", "ثني الركبتين", "قياس الصدر", "مد الساقين بالكامل"]
+    },
+    {
+      "q": "The term height or stature refers to taking measurement when children are:",
+      "o": ["standing upright", "supine (lying down)", "sitting on a chair", "lying on abdomen"],
+      "a": 0,
+      "trQ": "مصطلح الارتفاع أو القامة (Height or stature) يشير إلى أخذ القياس عندما يكون الأطفال:",
+      "trO": ["واقفين بشكل مستقيم", "مستلقين على الظهر", "جالسين على كرسي", "منبطحين على البطن"]
+    },
+    {
+      "q": "When measuring child height, let the child stand as tall and straight as possible with the head in midline & the line of vision parallel to:",
+      "o": ["the doctor's desk", "the side wall only", "the room door", "the floor or ceiling"],
+      "a": 3,
+      "trQ": "عند قياس طول الطفل وقوفاً، اجعل الطفل يقف بطول استقامة ممكنة مع وضع الرأس في المنتصف وخط الرؤية موازياً لـ:",
+      "trO": ["مكتب الطبيب", "الجدار الجانبي فقط", "باب الغرفة", "الأرض أو السقف"]
+    },
+    {
+      "q": "Length or stature is measured to the nearest:",
+      "o": ["cm", "mm", "meter", "gram"],
+      "a": 0,
+      "trQ": "يتم قياس الطول أو القامة لأقرب:",
+      "trO": ["سنتيمتر (cm)", "ملليمتر (mm)", "متر", "جرام"]
+    },
+    {
+      "q": "Head circumference is measured at its greatest circumference, usually slightly above the eyebrows and pinna of the ears and around the:",
+      "o": ["top of the crown", "front of the forehead", "occipital prominence at the back of the skull", "neck area"],
+      "a": 2,
+      "trQ": "يتم قياس محيط الرأس عند أكبر محيط له، وعادة ما يكون أعلى الحاجبين وصيوان الأذنين قليلاً وحول:",
+      "trO": ["قمة اليافوخ", "مقدمة الجبهة", "البروز القذالي في مؤخرة الجمجمة", "منطقة الرقبة"]
+    },
+    {
+      "q": "Chest circumference is measured by passing the tape measure on the:",
+      "o": ["neck line", "waist line", "umbilicus level", "nipple line"],
+      "a": 3,
+      "trQ": "يتم قياس محيط الصدر عن طريق تمرير شريط القياس على خط:",
+      "trO": ["خط الرقبة", "خط الخصر", "مستوى السرة", "الحلمة (nipple line)"]
+    },
+    {
+      "q": "At birth, normal head circumference is about:",
+      "o": ["40-42cm", "33-35cm", "30.5-33cm", "25-28cm"],
+      "a": 1,
+      "trQ": "عند الولادة، يكون محيط الرأس الطبيعي حوالي:",
+      "trO": ["40-42 سم", "33-35 سم", "30.5-33 سم", "25-28 سم"]
+    },
+    {
+      "q": "Normal chest circumference at birth is about:",
+      "o": ["35-38cm", "33-35cm", "28-30cm", "30.5-33cm"],
+      "a": 3,
+      "trQ": "محيط الصدر الطبيعي عند الولادة هو حوالي:",
+      "trO": ["35-38 سم", "33-35 سم", "28-30 سم", "30.5-33 سم"]
+    },
+    {
+      "q": "Because of cephalocaudal development, the head circumference normally exceeds the infant's chest circumference by 2 cm from birth until age:",
+      "o": ["24 months", "6 months", "36 months", "12 months"],
+      "a": 1,
+      "trQ": "بسبب النمو من الرأس إلى القدمين (cephalocaudal)، فإن محيط الرأس عادة ما يتجاوز محيط صدر الرضيع بمقدار 2 سم من الولادة حتى عمر:",
+      "trO": ["24 شهراً", "6 أشهر", "36 شهراً", "12 شهراً"]
+    },
+    {
+      "q": "Between the ages of 6 and 24 months, the head and chest circumference should be:",
+      "o": ["equal", "different", "chest is larger", "head is larger by 5cm"],
+      "a": 0,
+      "trQ": "بين سن 6 إلى 24 شهراً، يجب أن يكون محيط الرأس والصدر:",
+      "trO": ["متساويين (equal)", "مختلفين", "الصدر أكبر", "الرأس أكبر بـ 5 سم"]
+    },
+    {
+      "q": "After age of 2, the chest circumference should be:",
+      "o": ["smaller than the head circumference", "larger than the head circumference", "equal to the head circumference", "equal to the length"],
+      "a": 1,
+      "trQ": "بعد سن الثانية، يجب أن يكون محيط الصدر:",
+      "trO": ["أصغر من محيط الرأس", "أكبر من محيط الرأس", "مساوياً لمحيط الرأس", "مساوياً للطول"]
+    },
+    {
+      "q": "Equipment for weight measurement includes an infant weighing scale or foot scale and:",
+      "o": ["Stethoscope", "Measuring tape only", "Disposable sterile drape", "Tongue depressor"],
+      "a": 2,
+      "trQ": "معدات قياس الوزن تشمل ميزان الرضع أو ميزان القدم و:",
+      "trO": ["سماعة طبية", "شريط قياس فقط", "غطاء معقم للاستعمال مرة واحدة", "خافض لسان"]
+    },
+    {
+      "q": "To warm the patient's room is considered a procedure step in:",
+      "o": ["Height measurement", "Head circumference", "Chest circumference", "Weight measurement"],
+      "a": 3,
+      "trQ": "تدفئة غرفة المريض تعتبر خطوة إجراء في:",
+      "trO": ["قياس الطول", "محيط الرأس", "محيط الصدر", "قياس الوزن"]
+    },
+    {
+      "q": "Drape the scale by setting it at zero or placing a clean cover is important in:",
+      "o": ["Weight measurement", "Length measurement", "Head circumference", "Height measurement"],
+      "a": 0,
+      "trQ": "فرش الميزان أو ضبطه على الصفر مهم في:",
+      "trO": ["قياس الوزن", "قياس الطول", "محيط الرأس", "قياس القامة"]
+    },
+    {
+      "q": "Measuring board for infant and measuring tape are equipment used for:",
+      "o": ["Weight measurement", "Length measurement", "Chest circumference only", "Abdominal circumference"],
+      "a": 1,
+      "trQ": "لوح القياس للرضع وشريط القياس هي معدات تستخدم لـ:",
+      "trO": ["قياس الوزن", "قياس الطول (Length)", "محيط الصدر فقط", "محيط البطن"]
+    },
+    {
+      "q": "The term recumbent length refers to measuring children who are:",
+      "o": ["supine (lying down)", "sitting", "standing upright", "walking"],
+      "a": 0,
+      "trQ": "مصطلح طول الرقود يشير إلى قياس الأطفال الذين هم:",
+      "trO": ["مستلقون (نائمون على الظهر)", "جالسون", "واقفون باستقامة", "يتمشون"]
+    },
+    {
+      "q": "When measuring height, the child's heels, buttocks & back of the shoulders should touch:",
+      "o": ["the bed", "the ceiling", "the wall", "the table"],
+      "a": 2,
+      "trQ": "عند قياس الطول وقوفاً، يجب أن تلامس كعبا الطفل والأردات ومؤخرة الكتفين:",
+      "trO": ["السرير", "السقف", "الجدار (the wall)", "الطاولة"]
+    },
+    {
+      "q": "The vertical distance when measuring height is measured by placing a firm flat surface against the:",
+      "o": ["vertex or crown of the head", "chin", "chest", "nose"],
+      "a": 0,
+      "trQ": "يتم قياس المسافة العمودية عند قياس الطول بوضع سطح مسطح وثابت مقابل:",
+      "trO": ["قمة أو أعلى الرأس (vertex or crown)", "الذقن", "الصدر", "الأنف"]
+    },
+    {
+      "q": "Take measurements during inspiration and expiration and record the average of the two values when measuring:",
+      "o": ["Length", "Head circumference", "Weight", "Chest circumference"],
+      "a": 3,
+      "trQ": "خذ القياسات أثناء الشهيق والزفير وسجل متوسط القيمتين عند قياس:",
+      "trO": ["الطول", "محيط الرأس", "الوزن", "محيط الصدر"]
+    },
+    {
+      "q": "To plot on growth chart is an objective for:",
+      "o": ["Chest circumference only", "Weight, Length, and Head circumference", "Weight only", "Temperature measurement"],
+      "a": 1,
+      "trQ": "التسجيل على مخطط النمو (Growth chart) هو هدف لـ:",
+      "trO": ["محيط الصدر فقط", "الوزن، والطول، ومحيط الرأس", "الوزن فقط", "قياس درجة الحرارة"]
+    },
+    {
+      "q": "Before measuring weight, the nurse should remove the infant's:",
+      "o": ["diaper only", "socks only", "clothes", "hat only"],
+      "a": 2,
+      "trQ": "قبل قياس الوزن، يجب على الممرضة إزالة:",
+      "trO": ["الحفاضة فقط", "الجوارب فقط", "ملابس الرضيع", "القبعة فقط"]
+    },
+    {
+      "q": "After weighing the infant, the nurse should return the infant to the crib and dress the infant:",
+      "o": ["quickly", "after 10 minutes", "slowly", "without clothes"],
+      "a": 0,
+      "trQ": "بعد وزن الرضيع، يجب على الممرضة إعادة الرضيع إلى السرير وإلباسه ملابسه:",
+      "trO": ["بسرعة (quickly)", "بعد 10 دقائق", "ببطء", "بدون ملابس"]
+    },
+    {
+      "q": "Measure form vertex head to heels of feet with toes pointing upward is done during:",
+      "o": ["Length measurement for infant", "Chest measurement", "Height measurement for adult", "Weight measurement"],
+      "a": 0,
+      "trQ": "القياس من قمة الرأس إلى كعبي القدمين مع اتجاه أصابع القدم لأعلى يتم أثناء:",
+      "trO": ["قياس طول الرضيع", "قياس الصدر", "قياس طول البالغين", "قياس الوزن"]
+    },
+    {
+      "q": "The movable measuring rod of platform scale is used for measuring:",
+      "o": ["Weight", "Head circumference", "Height", "Chest circumference"],
+      "a": 2,
+      "trQ": "عصا القياس المتحركة لميزان المنصة تستخدم لقياس:",
+      "trO": ["الوزن", "محيط الرأس", "الارتفاع/الطول وقوفاً (Height)", "محيط الصدر"]
+    },
+    {
+      "q": "Equipment needed for head circumference is:",
+      "o": ["Measuring tape", "Measuring board", "Weighing scale", "Stethoscope"],
+      "a": 0,
+      "trQ": "المعدات اللازمة لقياس محيط الرأس هي:",
+      "trO": ["شريط القياس (Measuring tape)", "لوح القياس", "ميزان الوزن", "السماعة الطبية"]
+    },
+    {
+      "q": "Equipment needed for chest circumference is:",
+      "o": ["Weighing scale", "Measuring board", "Measuring tape", "Thermometer"],
+      "a": 2,
+      "trQ": "المعدات اللازمة لقياس محيط الصدر هي:",
+      "trO": ["ميزان الوزن", "لوح القياس", "شريط القياس (Measuring tape)", "ترمومتر"]
+    },
+    {
+      "q": "To evaluate the child's health status is an objective of:",
+      "o": ["Blood test", "Weight measurement", "History taking only", "Injection"],
+      "a": 1,
+      "trQ": "تقييم الحالة الصحية للطفل هو هدف لـ:",
+      "trO": ["فحص الدم", "قياس الوزن", "أخذ التاريخ المرضي فقط", "الحقن"]
+    },
+    {
+      "q": "To detect any marked loss or gain in weight is an objective of:",
+      "o": ["Head circumference", "Length measurement", "Chest measurement", "Weight measurement"],
+      "a": 3,
+      "trQ": "اكتشاف أي نقص أو زيادة ملحوظة في الوزن هو هدف لـ:",
+      "trO": ["محيط الرأس", "قياس الطول", "محيط الصدر", "قياس الوزن"]
+    },
+    {
+      "q": "To provide a basic idea for determining the infant status and medication dosage is an objective of:",
+      "o": ["Weight measurement", "Chest measurement", "Head circumference", "Height measurement"],
+      "a": 0,
+      "trQ": "توفير فكرة أساسية لتحديد حالة الرضيع وجرعة الدواء هو هدف لـ:",
+      "trO": ["قياس الوزن", "محيط الصدر", "محيط الرأس", "قياس الطول"]
+    },
+    {
+      "q": "When measuring infant length, the measurement is taken until children are:",
+      "o": ["15 years old", "10 years old", "5 years old", "24 months old"],
+      "a": 3,
+      "trQ": "عند قياس طول الرضيع، يتم أخذ القياس حتى يبلغ الأطفال:",
+      "trO": ["15 سنة", "10 سنوات", "5 سنوات", "24 شهراً"]
+    },
+    {
+      "q": "Remove and discard the drape is a procedural step in:",
+      "o": ["Weight measurement", "Height measurement", "Head circumference", "Chest circumference"],
+      "a": 0,
+      "trQ": "إزالة والتخلص من الغطاء المستعمل هي خطوة إجرائية في:",
+      "trO": ["قياس الوزن", "قياس الطول", "محيط الرأس", "محيط الصدر"]
+    },
+    {
+      "q": "Wash your hands and make the patient's room warm are initial steps in weight measurement procedure.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "اغسل يديك واجعل غرفة المريض دافئة وهي خطوات أولية في إجراء قياس الوزن.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "Gently lift the infant from his crib, and place him on the scale during weight measurement.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "ارفع الرضيع برفق من سريره وضعه على الميزان أثناء قياس الوزن.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "The term length refers to taking measurement when children are supine until children are 24 months old.",
+      "o": ["False", "True"],
+      "a": 1,
+      "trQ": "مصطلح الطول يشير إلى القياس عندما يكون الأطفال مستلقين حتى سن 24 شهراً.",
+      "trO": ["خطأ", "صح"]
+    },
+    {
+      "q": "When measuring infant length, hold head in midline and push gently toward table to fully extend legs.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "عند قياس طول الرضيع، امسك الرأس في خط المنتصف واضغط برفق نحو الطاولة لمد الساقين بالكامل.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "The term height or stature refers to taking measurement when children are standing upright.",
+      "o": ["False", "True"],
+      "a": 1,
+      "trQ": "مصطلح الارتفاع أو القامة يشير إلى القياس عندما يكون الأطفال واقفين باستقامة.",
+      "trO": ["خطأ", "صح"]
+    },
+    {
+      "q": "When measuring height, let the child's heels, buttocks & back of the shoulders touching the wall.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "عند قياس الطول، اجعل كعبا الطفل والأردات ومؤخرة الكتفين تلامس الجدار.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "At birth, normal head circumference is about 33-35cm.",
+      "o": ["False", "True"],
+      "a": 1,
+      "trQ": "عند الولادة، محيط الرأس الطبيعي حوالي 33-35 سم.",
+      "trO": ["خطأ", "صح"]
+    },
+    {
+      "q": "Normal chest circumference at birth is about 30.5-33cm.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "محيط الصدر الطبيعي عند الولادة حوالي 30.5-33 سم.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "The head circumference normally exceeds the infant's chest circumference by 2 cm from birth until age 6 months.",
+      "o": ["False", "True"],
+      "a": 1,
+      "trQ": "محيط الرأس عادة يتجاوز محيط الصدر بـ 2 سم من الولادة حتى عمر 6 أشهر.",
+      "trO": ["خطأ", "صح"]
+    },
+    {
+      "q": "Between the ages of 6 and 24 months, the head and chest circumference should be equal.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "بين سن 6 و 24 شهراً، يجب أن يتساوى محيط الرأس ومحيط الصدر.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "After age of 2, the chest circumference should be larger than the head circumference.",
+      "o": ["False", "True"],
+      "a": 1,
+      "trQ": "بعد سن الثانية، يجب أن يكون محيط الصدر أكبر من محيط الرأس.",
+      "trO": ["خطأ", "صح"]
+    },
+    {
+      "q": "Chest circumference is measured by passing the tape measure on the nipple line.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "يتم قياس محيط الصدر عن طريق تمرير شريط القياس على خط الحلمة.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "Head circumference is measured slightly above the eyebrows and pinna of the ears and around the occipital prominence.",
+      "o": ["False", "True"],
+      "a": 1,
+      "trQ": "يتم قياس محيط الرأس أعلى الحاجبين وصيوان الأذنين قليلاً وحول البروز القذالي.",
+      "trO": ["خطأ", "صح"]
+    },
+    {
+      "q": "Take measurements during inspiration and expiration and record the average of the two values for chest circumference.",
+      "o": ["True", "False"],
+      "a": 0,
+      "trQ": "خذ القياسات أثناء الشهيق والزفير وسجل متوسط القيمتين لمحيط الصدر.",
+      "trO": ["صح", "خطأ"]
+    },
+    {
+      "q": "Balance the scale by setting it at zero before placing the infant on it.",
+      "o": ["False", "True"],
+      "a": 1,
+      "trQ": "اضبط الميزان على الصفر قبل وضع الرضيع عليه.",
+      "trO": ["خطأ", "صح"]
+    }
+  ],
+  "place3": [
+   {
+    q: "When measuring oral temperature using a mercury glass thermometer, if the child has recently consumed hot or cold fluids, the nurse should wait for how long before measurement?",
+    o: ["5 minutes", "10 minutes", "15 minutes", "30 minutes"],
+    a: 2,
+    trQ: "عند قياس درجة الحرارة عن طريق الفم باستخدام الترمومتر الزجاجي، إذا كان الطفل قد تناول سوائل ساخنة أو باردة حديثاً، فما هي المدة التي يجب أن تنتظرها الممرضة قبل القياس؟",
+    trO: ["5 دقائق", "10 دقائق", "15 دقيقة", "30 دقيقة"]
+  },
+  {
+    q: "What is the primary rationale for choosing axillary temperature measurement in infants instead of rectal route?",
+    o: ["It is more accurate", "It prevents intrusive procedures and rectal perforation", "It takes less than 10 seconds", "It is recommended during active diarrhea"],
+    a: 1,
+    trQ: "ما هو المبرر الأساسي لاختيار قياس درجة الحرارة تحت الإبط للرضع بدلاً من الطريق الشرجي؟",
+    trO: ["أكثر دقة", "يمنع الإجراءات التدخلية وثقب المستقيم", "يستغرق أقل من 10 ثوانٍ", "موصى به أثناء الإسهال النشط"]
+  },
+  {
+    q: "When inserting a rectal thermometer in an infant, to what depth should the lubricated thermometer be inserted?",
+    o: ["1.0 cm", "2.5 cm", "5.0 cm", "7.5 cm"],
+    a: 1,
+    trQ: "عند إدخال ترمومتر شرجي للرضع، إلى أي عمق يجب إدخال الترمومتر المزيّت؟",
+    trO: ["1.0 سم", "2.5 سم", "5.0 سم", "7.5 سم"]
+  },
+  {
+    q: "In which of the following clinical conditions is rectal temperature measurement strictly contraindicated?",
+    o: ["Mild upper respiratory infection", "History of diarrhea, rectal surgery, or mucosal chemotherapy", "Neonates with physiological jaundice", "Child with stable asthma"],
+    a: 1,
+    trQ: "في أي من الحالات السريرية التالية يُمنع قياس درجة الحرارة عن طريق الشرج منعاً باتاً؟",
+    trO: ["عدوى خفيفة في الجهاز التنفسي العلوي", "تاريخ من الإسهال، جراحة الشرج، أو العلاج الكيميائي للغشاء المخاطي", "حديثو الولادة المصابون بالصفراء الفسيولوجية", "طفل مصاب بالربو المستقر"]
+  },
+  {
+    q: "When using a tympanic thermometer for the most accurate results, how many measurements should the nurse take and record?",
+    o: ["Take one measurement and record it", "Take two measurements and record the average", "Take three measurements and record the highest reading", "Take four measurements and record the lowest reading"],
+    a: 2,
+    trQ: "عند استخدام ترمومتر الأذن للحصول على أكثر النتائج دقة، كم عدد القياسات التي يجب أن تسجلها الممرضة؟",
+    trO: ["أخذ قياس واحد وتسجيله", "أخذ قياسين وتسجيل المتوسط", "أخذ ثلاثة قياسات وتسجيل أعلى قراءة", "أخذ أربعة قياسات وتسجيل أدنى قراءة"]
+  },
+  {
+    q: "What is the recommended anatomical landmark and stethoscope placement for assessing an apical pulse in a child?",
+    o: ["Second intercostal space at the right sternal border", "Fourth to fifth intercostal spaces just below the left nipple", "Third intercostal space at the midclavicular line", "Sixth intercostal space at the xiphoid process"],
+    a: 1,
+    trQ: "ما هي النقطة التشريحية الموصى بها وموضع السماعة لتقييم النبض القمي (Apical pulse) لدى الطفل؟",
+    trO: ["المسافة الوربية الثانية عند حافة القص اليمنى", "المسافات الوربية الرابعة إلى الخامسة أسفل حلمة اليسرى مباشرة", "المسافة الوربية الثالثة عند خط منتصف الترقوة", "المسافة الوربية السادية عند الناتئ الخنجري"]
+  },
+  {
+    q: "For children under what age is an apical pulse routinely measured instead of a peripheral pulse?",
+    o: ["Less than one year of age", "Less than two years of age", "Less than three years of age", "Less than five years of age"],
+    a: 2,
+    trQ: "ل للأطفال دون أي عمر يتم قياس النبض القمي روتينياً بدلاً من النبض الطرفي؟",
+    trO: ["أقل من سنة واحدة", "أقل من سنتين", "أقل من ثلاث سنوات", "أقل من خمس سنوات"]
+  },
+  {
+    q: "When counting a child's radial pulse, for how long must the nurse count to ensure clinical accuracy?",
+    o: ["15 seconds", "30 seconds", "One full minute", "Two full minutes"],
+    a: 2,
+    trQ: "عند عد النبض الكعبري (Radial pulse) للطفل، ما هي المدة التي يجب أن تقضيها الممرضة في العد لضمان الدقة السريرية؟",
+    trO: ["15 ثانية", "30 ثانية", "دقيقة كاملة واحدة", "دقيقتان كاملتان"]
+  },
+  {
+    q: "Which physiological measurement should always be assessed FIRST before touching or disturbing a crying or active child?",
+    o: ["Blood pressure", "Radial pulse", "Respiratory rate", "Axillary temperature"],
+    a: 2,
+    trQ: "أي قياس فسيولوجي يجب تقييمه دائماً أولاً قبل لمس أو إزعاج الطفل الباكي أو النشط؟",
+    trO: ["ضغط الدم", "النبض الكعبري", "معدل التنفس", "درجة الحرارة تحت الإبط"]
+  },
+  {
+    q: "How should respiratory movements be observed in infants and young children?",
+    o: ["By observing thoracic chest movement", "By observing abdominal movement", "By listening with a stethoscope over the trachea", "By palpating the intercostal spaces"],
+    a: 1,
+    trQ: "كيف يجب ملاحظة حركات التنفس لدى الرضع والأطفال الصغار؟",
+    trO: ["من خلال ملاحظة حركة الصدر الصدري", "من خلال ملاحظة حركة البطن", "من خلال الاستماع بالسماعة الطبية فوق القصبة الهوائية", "من خلال جس المسافات الوربية"]
+  },
+  {
+    q: "When selecting a pediatric blood pressure cuff, what is the correct rule regarding cuff size in relation to the child's upper arm?",
+    o: ["It should cover the entire length from shoulder to elbow", "The lower edge should be about 2.5 cm above the antecubital space", "It should completely encircle the arm twice", "It should cover only 20% of the upper arm width"],
+    a: 1,
+    trQ: "عند اختيار مانش (كفة) ضغط الدم للأطفال، ما هي القاعدة الصحيحة بخصوص حجم الكفة بالنسبة لعضد الطفل؟",
+    trO: ["يجب أن يغطي الطول بالكامل من الكتف إلى الكوع", "يجب أن تكون الحافة السفلى على بعد حوالي 2.5 سم فوق حفرة المرفق", "يجب أن يحيط بالذراع بالكامل مرتين", "يجب أن يغطي 20% فقط من عرض الجزء العلوي من الذراع"]
+  },
+  {
+    q: "During blood pressure measurement, after inflating the cuff until the radial pulse disappears, how much higher should the nurse pump the pressure?",
+    o: ["Additional 10 mmHg", "Additional 20 mmHg", "Additional 40 mmHg", "Additional 50 mmHg"],
+    a: 1,
+    trQ: "أثناء قياس ضغط الدم، بعد نفخ الكفة حتى يختفي النبض الكعبري، بمقدار كم إضافي يجب على الممرضة ضخ الضغط؟",
+    trO: ["10 ملم زئبق إضافية", "20 ملم زئبق إضافية", "40 ملم زئبق إضافية", "50 ملم زئبق إضافية"]
+  },
+  {
+    q: "What does the first Korotkoff sound represent during blood pressure auscultation?",
+    o: ["Diastolic pressure (muffled sound)", "Systolic pressure (clear, audible sound)", "Mean arterial pressure", "Venous return pressure"],
+    b: 1,
+    trQ: "ماذا يمثل صوت كوروتكوف الأول أثناء سماع ضغط الدم؟",
+    trO: ["الضغط الانبساطي (صوت مكتوم)", "الضغط الانقباضي (صوت واضح ومسموع)", "متوسط ضغط الدم الشرياني", "ضغط العودة الوريدية"]
+  },
+  {
+    q: "Which thermometer type uses a probe cover and displays the reading digitally after approximately 60 seconds?",
+    o: ["Mercury glass thermometer", "Electronic thermometer", "Tympanic thermometer", "Infrared forehead strip"],
+    a: 1,
+    trQ: "أي نوع من الترمومترات يستخدم غطاء للمسبار ويعرض القراءة رقمياً بعد حوالي 60 ثانية؟",
+    trO: ["الترمومتر الزجاجي الزئبقي", "الترمومتر الإلكتروني", "ترمومتر الأذن", "شريط الجبهة بالأشعة تحت الحمراء"]
+  },
+  {
+    q: "When taking an axillary temperature in a young child, how long should the arm be held firmly against the side?",
+    o: ["1 minute", "2 minutes", "3 minutes", "5 minutes"],
+    d: 3,
+    trQ: "عند قياس درجة الحرارة تحت الإبط لطفل صغير، ما هي المدة التي يجب فيها إبقاء الذراع مثبتة بقوة إلى جانب الجسم؟",
+    trO: ["دقيقة واحدة", "دقيقتان", "3 دقائق", "5 دقائق"]
+  },
+  {
+    q: "What is the correct action if a child cries vigorously just before measuring their vital signs?",
+    o: ["Proceed immediately and document the altered values", "Postpone vital signs for 15-30 minutes until the child calms down", "Double all recorded pulse and respiratory numbers", "Forcefully restrain the child on the examination bed"],
+    a: 1,
+    trQ: "ما هو التصرف الصحيح إذا بكى الطفل بشدة قبيل قياس علاماته الحيوية مباشرة؟",
+    trO: ["المتابعة فوراً وتسجيل القيم المتغيرة", "تأجيل العلامات الحيوية لمدة 15-30 دقيقة حتى يهدأ الطفل", "مضاعفة جميع أرقام النبض والتنفس المسجلة", "تقييد الطفل بالقوة على سرير الفحص"]
+  },
+  {
+    q: "When preparing to take an oral temperature with a mercury thermometer, what level must the mercury be shaken down to before placement?",
+    o: ["Below 35 degrees Celsius", "Below 37 degrees Celsius", "Below 38 degrees Celsius", "To exactly room temperature"],
+    a: 0,
+    trQ: "عند الاستعداد لقياس درجة حرارة الفم بترمومتر زئبقي، إلى أي مستوى يجب رجّ الزئبق للأسفل قبل وضعه؟",
+    trO: ["أقل من 35 درجة مئوية", "أقل من 37 درجة مئوية", "أقل من 38 درجة مئوية", "إلى درجة حرارة الغرفة تماماً"]
+  },
+  {
+    q: "What position is best recommended when placing an infant for a rectal temperature measurement?",
+    o: ["Standing upright with arms raised", "Side-lying or prone position across mother's lap", "High Fowler's position in a wheelchair", "Trendelenburg position"],
+    b: 1,
+    trQ: "ما هو الوضع الموصى به بشدة عند وضع الرضيع لقياس درجة الحرارة عن طريق الشرج؟",
+    trO: ["الوقوف بشكل مستقيم مع رفع الذراعين", "وضع الاستلقاء الجانبي أو البطني عبر حجر الأم", "وضع فاولر العالي على كرسي متحرك", "وضع ترندленبورغ"]
+  },
+  {
+    q: "Why is taking vital signs in a specific sequence (respiratory rate, pulse, then temperature) clinically preferred in infants?",
+    o: ["Because it saves equipment setup time", "Because crying or disturbing the child alters respiratory and heart rates", "Because temperature probes break easily if used first", "Because hospital policy strictly mandates this order"],
+    a: 1,
+    trQ: "لماذا يُفضل إكلينيكياً أخذ العلامات الحيوية بترتيب معين (معدل التنفس، النبض، ثم الحرارة) لدى الرضع؟",
+    trO: ["لأنه يوفر وقت إعداد الأجهزة", "لأن بكاء الطفل أو إزعاجه يغير معدلات التنفس وضربات القلب", "لأن مجسات الحرارة تنكسر بسهولة إذا استُخدمت أولاً", "لأن سياسة المستشفيات تفرض هذا الترتيب بحرفية"]
+  },
+  {
+    q: "When assessing pulse characteristics, which of the following parameters are evaluated by the pediatric nurse?",
+    o: ["Rate, rhythm, and strength", "Color, temperature, and moisture", "Length, width, and depth", "Volume and specific gravity"],
+    a: 0,
+    trQ: "عند تقييم خصائص النبض، ما هي المعايير التي تقيّمها ممرضة الأطفال؟",
+    trO: ["المعدل والانتظام والقوة", "اللون والحرارة والرطوبة", "الطول والعرض والعمق", "الحجم والوزن النوعي"]
+  },
+  {
+    q: "What equipment is specifically required for rectal temperature that is not needed for axillary temperature?",
+    o: ["Stopwatch and pen", "Lubricant (Vaseline) and rectal thermometer", "Kidney basin and alcohol swabs", "Stethoscope and blood pressure cuff"],
+    b: 1,
+    trQ: "ما هي الأداة المطلوبة خصيصاً لقياس حرارة الشرج والتي لا تُعد ضرورية لقياس الحرارة تحت الإبط؟",
+    trO: ["ساعة توقف وقلم", "ملين (فازلين) وترمومتر شرجي", "حوض كلوي ومسحات كحولية", "سماعة طبية ومانش ضغط دم"]
+  },
+  {
+    q: "Where is the temporal or radial pulse typically counted when peripheral pulses are checked in older pediatric clients?",
+    o: ["Over the carotid triangle in the neck", "Over the radial artery at the wrist", "In the popliteal fossa behind the knee", "Over the dorsalis pedis on the foot"],
+    b: 1,
+    trQ: "أين يتم عادةً عد النبض الكعبري أو الطرفي عند فحص النبضات الطرفية للأطفال الأكبر سناً؟",
+    trO: ["فوق مثلث السباتي في الرقبة", "فوق الشريان الكعبري في المعصم", "في الحفرة المأبضية خلف الركبة", "فوق الشريان ظهر القدم"]
+  },
+  {
+    q: "What is the primary purpose of assessing respiration rate for one full minute in children?",
+    o: ["To account for normal irregular breathing patterns common in infants", "To allow the child to fall asleep", "To match the exact duration of an intravenous infusion", "To test the child's lung capacity"],
+    a: 0,
+    trQ: "ما هو الغرض الأساسي من قياس معدل التنفس لمدة دقيقة كاملة عند الأطفال؟",
+    trO: ["مراعاة أنماط التنفس غير المنتظمة الطبيعية الشائعة لدى الرضع", "السماح للطفل بالاستغراق في النوم", "مواءمة المدة الدقيقة للتسريب الوريدي", "اختبار سعة الرئة لدى الطفل"]
+  },
+  {
+    q: "When inflating a blood pressure cuff, what sound marks the reading for diastolic pressure in older children?",
+    o: ["The appearance of the very first tapping sound", "The point where sounds completely disappear or become muffled", "The moment the manometer needle stops vibrating", "The peak of the mercury column"],
+    b: 1,
+    trQ: "عند نفخ كفة ضغط الدم، ما هو الصوت الذي يحدد قراءة الضغط الانبساطي لدى الأطفال الأكبر سناً؟",
+    trO: ["ظهور أول صوت نقر على الإطلاق", "النقطة التي تختفي فيها الأصوات تماماً أو تصبح مكتومة", "اللحظة التي يتوقف فيها إبرة المانومتر عن الاهتزاز", "ذروة عمود الزئبق"]
+  },
+  {
+    q: "Why should a blood pressure cuff never be over-inflated during a pediatric assessment?",
+    o: ["It wastes electricity in digital monitors", "It causes unnecessary pain, distress, and false high readings", "It permanently damages the mercury reservoir", "It alters the child's core body temperature"],
+    b: 1,
+    trQ: "لماذا يجب عدم الإفراط في نفخ كفة ضغط الدم أثناء تقييم الأطفال مطلقاً؟",
+    trO: ["لأنه يستهلك الكهرباء في الشاشات الرقمية", "لأنه يسبب ألماً غير مروع وازعاجاً وقراءات عالية خاطئة", "لأنه يتلف مستودع الزئبق بشكل دائم", "لأنه يغير درجة حرارة جسم الطفل الأساسية"]
+  },
+  {
+    q: "What is the correct procedure for cleansing a mercury thermometer after use?",
+    o: ["Rinse with hot boiling water immediately", "Wipe with alcohol swab from bulb up to stem, wash with soap and water", "Submerge in bleach for 24 hours", "Wipe from stem down toward the bulb"],
+    b: 1,
+    trQ: "ما هي الإجراءات الصحيحة لتنظيف الترمومتر الزئبقي بعد الاستخدام؟",
+    trO: ["الشطف بماء مغلي ساخن فوراً", "المسح بممسحة كحولية من المستودع إلى الذراع، ثم الغسيل بالماء والصابون", "الغمر في المبيض لمدة 24 ساعة", "المسح من الذراع نحو المستودع"]
+  },
+  {
+    q: "In tympanic temperature measurement, how is the ear canal properly straightened for an accurate reading in a young child?",
+    o: ["Pull the pinna straight up and backward", "Pull the pinna down and back", "Push the tragus inward firmly", "Tilt the child's head forward toward the chest"],
+    a: 0,
+    trQ: "في قياس حرارة الأذن، كيف يتم تقويم قناة الأذن بشكل صحيح للحصول على قراءة دقيقة لدى الطفل الصغير؟",
+    trO: ["سحب صيوان الأذن لأعلى وللخلف مباشرة", "سحب صيوان الأذن لأسفل وللخلف", "دفع الزائدة الأذنية للداخل بقوة", "إمالة رأس الطفل للأمام نحو الصدر"]
+  },
+  {
+    q: "Which vital sign measurement involves placing a diaphragm of a stethoscope between the 4th and 5th intercostal spaces?",
+    o: ["Radial pulse", "Apical pulse", "Carotid pulse", "Blood pressure pulse"],
+    b: 1,
+    trQ: "أي قياس للعلامات الحيوية يتضمن وضع سماعة الطبيب بين المسافات الوربية الرابعة والخامسة؟",
+    trO: ["النبض الكعبري", "النبض القمي", "النبض السباتي", "نبض ضغط الدم"]
+  },
+  {
+    q: "What is a major advantage of using an electronic thermometer for oral or axillary readings in children?",
+    o: ["It provides a rapid digital display and safe probe covers", "It uses glass that never breaks", "It requires no battery power", "It measures blood pressure simultaneously"],
+    a: 0,
+    trQ: "ما هي الميزة الرئيسية لاستخدام الترمومتر الإلكتروني لقراءات الفم أو الإبط لدى الأطفال؟",
+    trO: ["يوفر عرضاً رقمياً سريعاً وأغطية مسبار آمنة", "يستخدم زجاجاً لا ينكسر أبداً", "لا يتطلب طاقة بطارية", "يقيس ضغط الدم في نفس الوقت"]
+  },
+  {
+    q: "When should the nurse report a respiratory rate finding during pediatric physical assessment?",
+    o: ["Only if the child stops breathing for 5 seconds", "Immediately if any respiratory abnormality or distress is observed", "Only at the end of the full 24-hour shift", "Never, unless requested by the parents"],
+    b: 1,
+    trQ: "متى يجب على الممرضة الإبلاغ عن نتيجة معدل التنفس أثناء الفحص البدني للأطفال؟",
+    trO: ["فقط إذا توقف الطفل عن التنفس لمدة 5 ثوانٍ", "فوراً إذا تم ملاحظة أي شذوذ تنفسي أو ضيق تنفس", "فقط في نهاية وردية العمل التي تستمر 24 ساعة", "أبداً إلا إذا طلب الأبوين ذلك"]
+  },
+  {
+    q: "What equipment is listed for checking an apical pulse?",
+    o: ["Sphygmomanometer and tape measure", "Stethoscope, cotton, and antiseptic solution", "Mercury glass thermometer and lubricant", "Tympanic probe and alcohol wipes"],
+    b: 1,
+    trQ: "ما هي الأدوات المدرجة لفحص النبض القمي؟",
+    trO: ["جهاز قياس الضغط ومريط القياس", "سماعة طبية، قطن، ومحلول مطهر", "ترمومتر زجاجي زئبقي ومادة مزلقة", "مسبار أذني ومناديل كحولية"]
+  },
+  {
+    q: "Why is taking a blood pressure cuff size that is too small dangerous or misleading in children?",
+    o: ["It results in falsely high blood pressure readings", "It causes immediate cardiac arrest", "It results in falsely low readings", "It tears the brachial skin"],
+    a: 0,
+    trQ: "لماذا يُعد استخدام كفة ضغط دم صغيرة جداً أمراً خطيراً أو مضللاً لدى الأطفال؟",
+    trO: ["يؤدي إلى قراءات ضغط دم عالية بشكل خاطئ", "يسبب توقف القلب الفوري", "يؤدي إلى قراءات منخفضة بشكل خاطئ", "يمزق جلد العضد"]
+  },
+  {
+    q: "What specific precaution must be taken when shaking down a mercury glass thermometer?",
+    o: ["Shake it near a hard metal table to ensure momentum", "Ensure it is away from objects or walls to prevent breakage", "Hold it by the bulb end tightly", "Submerge it in ice water before shaking"],
+    b: 1,
+    trQ: "ما هي الاحتياطات الخاصة التي يجب اتخاذها عند رجّ الترمومتر الزجاجي الزئبقي؟",
+    trO: ["رجّه بالقرب من طاولة معدنية صلبة لضمان الزخم", "التأكد من أنه بعيد عن الأجسام أو الجدران لمنع الكسر", "إمساكه من طرف المستودع بإحكام", "غمره في ماء مثلج قبل الرجّ"]
+  },
+  {
+    q: "What is the purpose of checking pulse characteristics along with pulse rate?",
+    o: ["To determine the overall cardiovascular status and rhythm regularity", "To calculate the exact body surface area", "To measure hemoglobin levels indirectly", "To assess neurological reflex arcs"],
+    a: 0,
+    trQ: "ما هو الغرض من فحص خصائص النبض جنباً إلى جنب مع معدل النبض؟",
+    trO: ["تحديد الحالة القلبية الوعائية العامة وانتظام الإيقاع", "حساب مساحة سطح الجسم بدقة", "قياس مستويات الهيموجلوبين بشكل غير مباشر", "تقييم أقواس منعكس الجهاز العصبي"]
+  },
+  {
+    q: "Where should the lower edge of the blood pressure cuff be positioned relative to the child's arm?",
+    o: ["Directly touching the wrist joints", "About 1.5 cm above the antecubital space", "Over the shoulder joint", "Below the finger tips"],
+    b: 1,
+    trQ: "أين يجب وضع الحافة السفلية لكفة ضغط الدم بالنسبة لذراع الطفل؟",
+    trO: ["تلامس مفاصل المعصم مباشرة", "حوالي 1.5 سم فوق حفرة المرفق", "فوق مفصل الكتف", "تحت أطراف الأصابع"]
+  },
+  {
+    q: "True or False: Axillary temperature measurement is safer than rectal measurement because it avoids intrusive procedures and rectal perforation.",
+    o: ["True", "False"],
+    a: 0,
+    trQ: "صح أو خطأ: قياس درجة الحرارة تحت الإبط أسرع وأكثر أماناً من القياس الشرجي لأنه يتجنب الإجراءات التدخلية وثقب المستقيم.",
+    trO: ["صح", "خطأ"]
+  },
+  {
+    q: "True or False: Rectal temperature is strongly recommended for children who have active diarrhea or are receiving mucosal chemotherapy.",
+    o: ["True", "False"],
+    a: 1,
+    trQ: "صح أو خطأ: يُوصى بشدة بقياس الحرارة عن طريق الشرج للأطفال الذين يعانون من إسهال نشط أو يخضعون لعلاج كيميائي للأغشية المخاطية.",
+    trO: ["صح", "خطأ"]
+  },
+  {
+    q: "True or False: When measuring a child's respiratory rate, the nurse should count for one full minute to account for normal irregular breathing patterns.",
+    o: ["True", "False"],
+    a: 0,
+    trQ: "صح أو خطأ: عند قياس معدل تنفس الطفل، يجب على الممرضة العد لمدة دقيقة كاملة مراعاة لأنماط التنفس غير المنتظمة الطبيعية.",
+    trO: ["صح", "خطأ"]
+  },
+  {
+    q: "True or False: Apical pulse is routinely measured for children under three years of age.",
+    o: ["True", "False"],
+    a: 0,
+    trQ: "صح أو خطأ: يتم قياس النبض القمي روتينياً للأطفال دون سن ثلاث سنوات.",
+    trO: ["صح", "خطأ"]
+  },
+  {
+    q: "True or False: Crying, bathing, or feeding a child immediately before vital signs will have no impact on their pulse or respiratory rate.",
+    o: ["True", "False"],
+    a: 1,
+    trQ: "صح أو خطأ: بكاء الطفل أو استحمام أو إطعام الطفل قبيل قياس العلامات الحيوية مباشرة لن يكون له أي تأثير على نبضه أو معدل تنفسه.",
+    trO: ["صح", "خطأ"]
+  },
+  {
+    q: "True or False: The nurse should always measure respiratory rate and pulse before taking a temperature because disturbing the child can alter these rates.",
+    o: ["True", "False"],
+    a: 0,
+    trQ: "صح أو خطأ: يجب على الممرضة دائماً قياس معدل التنفس والنبض قبل قياس درجة الحرارة لأن إزعاج الطفل يمكن أن يغير هذه المعدلات.",
+    trO: ["صح", "خطأ"]
+  },
+  {
+    q: "True or False: A blood pressure cuff that is too small for a child's arm will produce falsely high blood pressure readings.",
+    o: ["True", "False"],
+    a: 0,
+    trQ: "صح أو خطأ: كفة ضغط الدم الصغيرة جداً على ذراع الطفل ستنتج قراءات ضغط دم عالية بشكل خاطئ.",
+    trO: ["صح", "خطأ"]
+  },
+  {
+    q: "True or False: Tympanic thermometers measure infrared heat emissions from the tympanic membrane.",
+    o: ["True", "False"],
+    a: 0,
+    trQ: "صح أو خطأ: تقيس ترمومترات الأذن انبعاثات الحرارة بالأشعة تحت الحمراء من غشاء الطبلة.",
+    trO: ["صح", "خطأ"]
+  },
+  {
+    q: "True or False: Oral temperature measurement using a mercury thermometer should be postponed for 15 minutes if the child has just consumed a hot drink.",
+    o: ["True", "False"],
+    a: 0,
+    trQ: "صح أو خطأ: يجب تأجيل قياس حرارة الفم باستخدام الترمومتر الزئبقي لمدة 15 دقيقة إذا كان الطفل قد تناول شراباً ساخناً للتو.",
+    trO: ["صح", "خطأ"]
+  },
+  {
+    q: "True or False: Radial pulse measurement is standard practice for infants under one year of age.",
+    o: ["True", "False"],
+    a: 1,
+    trQ: "صح أو خطأ: قياس النبض الكعبري هو الممارسة القياسية للرضع الذين تقل أعمارهم عن سنة واحدة.",
+    trO: ["صح", "خطأ"]
+  },
+  {
+    q: "True or False: When inserting a rectal thermometer in an infant, the depth of insertion should be approximately 2.5 cm.",
+    o: ["True", "False"],
+    a: 0,
+    trQ: "صح أو خطأ: عند إدخال ترمومتر شرجي للرضع، يجب أن يكون عمق الإدخال حوالي 2.5 سم.",
+    trO: ["صح", "خطأ"]
+  },
+  {
+    q: "True or False: Over-inflating a blood pressure cuff is clinically recommended to ensure maximum accuracy in pediatric patients.",
+    o: ["True", "False"],
+    a: 1,
+    trQ: "صح أو خطأ: يُوصى إكلينيكياً بالإفراط في نفخ كفة ضغط الدم لضمان أقصى دقة لدى المرضى الأطفال.",
+    trO: ["صح", "خطأ"]
+  },
+  {
+    q: "True or False: The first Korotkoff sound heard during blood pressure measurement corresponds to the systolic pressure.",
+    o: ["True", "False"],
+    a: 0,
+    trQ: "صح أو خطأ: صوت كوروتكوف الأول الذي يتم سماعه أثناء قياس ضغط الدم يتوافق مع الضغط الانقباضي.",
+    trO: ["صح", "خطأ"]
+  },
+  {
+    q: "True or False: Alcohol swabs are utilized to clean and disinfect thermometer bulbs before and after clinical procedures.",
+    o: ["True", "False"],
+    a: 0,
+    trQ: "صح أو خطأ: تُستخدم المسحات الكحولية لتنظيف وتطهير مستودعات الترمومترات قبل وبعد الإجراءات السريرية.",
+    trO: ["صح", "خطأ"]
+  },
+  {
+    q: "True or False: Observing abdominal movement is the preferred method for assessing respiration in infants and young children.",
+    o: ["True", "False"],
+    a: 0,
+    trQ: "صح أو خطأ: ملاحظة حركة البطن هي الطريقة المفضلة لتقييم التنفس لدى الرضع والأطفال الصغار.",
+    trO: ["صح", "خطأ"]
+  }
+  ],
+  "place4": [
+  
+  ],
+  "place5": [
+  
+  ],
+  "place6": [
+  
+  ],
+  "place7": [
+  
+  ],
+  "place8": [
+  
+  ],
+  "place9": [
+  
+  ],
+  "place10": [
+  
+  ],
+  "place11": [
+  
+  ], 
+  "place12": [
+    
+  ],
+  "place13": [
+    
+  ],
+  "place14": [
+    
+  ],
+  "place15": [
+    
+  ]
+}; 
+
+const STORAGE_PREFIX = "theCodingNurse_pediatric_";
+let quiz = []; 
+let answers = []; 
+let i=0, score=0;
+let currentMode = 'study'; 
+let currentDataset = 'place1'; 
+let timerInterval;
+let isReviewMode = false;
+let isComprehensiveExamMode = false;
+
+let soundEnabled = true;
+let vibrationEnabled = true;
+let autoAdvanceTimeout;
+let audioCtx = null; 
+
+const qDiv=document.getElementById("question"),
+      oDiv=document.getElementById("options"),
+      progress=document.getElementById("progressBar"),
+      midNav=document.getElementById("midNav"),
+      quizContainer=document.getElementById("quizContainer"),
+      startCard=document.getElementById("startCard"),
+      resultCard=document.getElementById("resultCard"),
+      scoreText=document.getElementById("scoreText");
+
+function getDatasetLabel(dataset) {
+    if (dataset === 'all') return "الامتحان الشامل";
+    const drawer = document.getElementById("datasetDrawer");
+    if(drawer) {
+        const selectedOption = drawer.querySelector(`option[value="${dataset}"]`);
+        if(selectedOption) return selectedOption.textContent;
+    }
+    return dataset;
+}
+
+function playAudioTone(type) {
+    if(!soundEnabled) return; 
+    try {
+        if (!audioCtx) { audioCtx = new (window.AudioContext || window.webkitAudioContext)(); }
+        if (audioCtx.state === 'suspended') { audioCtx.resume(); }
+        const oscillator = audioCtx.createOscillator();
+        const gainNode = audioCtx.createGain();
+        oscillator.connect(gainNode); gainNode.connect(audioCtx.destination);
+        
+        if(type === 'correct') {
+            oscillator.frequency.setValueAtTime(523.25, audioCtx.currentTime); 
+            oscillator.frequency.setValueAtTime(659.25, audioCtx.currentTime + 0.08); 
+            gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.25);
+            oscillator.start(); oscillator.stop(audioCtx.currentTime + 0.25);
+        } else if(type === 'wrong') {
+            oscillator.type = 'sawtooth'; oscillator.frequency.setValueAtTime(140, audioCtx.currentTime);
+            gainNode.gain.setValueAtTime(0.15, audioCtx.currentTime); gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.35);
+            oscillator.start(); oscillator.stop(audioCtx.currentTime + 0.35);
+        } else if(type === 'click') {
+            oscillator.frequency.setValueAtTime(380, audioCtx.currentTime); gainNode.gain.setValueAtTime(0.08, audioCtx.currentTime);
+            gainNode.gain.exponentialRampToValueAtTime(0.01, audioCtx.currentTime + 0.06);
+            oscillator.start(); oscillator.stop(audioCtx.currentTime + 0.06);
+        }
+    } catch(e) { console.log("Audio issue handled."); }
+}
+
+function triggerHaptic(type) {
+    if (!vibrationEnabled) return; 
+    if (navigator.vibrate) {
+        if (type === 'correct') navigator.vibrate(70);
+        else if (type === 'wrong') navigator.vibrate([100, 60, 100]);
+        else if (type === 'click') navigator.vibrate(35);
+    }
+}
+
+function toggleSound() {
+    soundEnabled = !soundEnabled;
+    document.getElementById("soundToggle").innerHTML = soundEnabled ? "<span>🔊</span> Sound On" : "<span>🔇</span> Sound Off";
+}
+
+function toggleVibration() {
+    vibrationEnabled = !vibrationEnabled;
+    document.getElementById("vibeToggle").innerHTML = vibrationEnabled ? "<span>📳</span> Vibe On" : "<span>📴</span> Vibe Off";
+}
+
+function setMode(mode) { currentMode = mode; showHighScore(); }
+function setDataset(dataset) { currentDataset = dataset; showHighScore(); }
+
+function toggleTheme() {
+  const currentTheme = document.documentElement.getAttribute('data-theme');
+  const targetTheme = currentTheme === 'dark' ? 'light' : 'dark';
+  document.documentElement.setAttribute('data-theme', targetTheme);
+  document.querySelector('.theme-toggle').innerHTML = targetTheme === 'dark' ? '<span>☀️</span> Light Mode' : '<span>🌓</span> Dark Mode';
+}
+
+function prepareQuizData(shouldShuffle) {
+    quiz.forEach(q => {
+        q.combinedOptions = q.o.map((enText, idx) => ({
+            en: enText,
+            ar: q.trO && q.trO[idx] ? q.trO[idx] : ""
+        }));
+    });
+    
+    if(shouldShuffle) {
+        for (let currentIdx = quiz.length - 1; currentIdx > 0; currentIdx--) {
+            const randomIdx = Math.floor(Math.random() * (currentIdx + 1));
+            [quiz[currentIdx], quiz[randomIdx]] = [quiz[randomIdx], quiz[currentIdx]];
+        }
+        quiz.forEach(q => {
+            for (let j = q.combinedOptions.length - 1; j > 0; j--) {
+                const r = Math.floor(Math.random() * (j + 1));
+                [q.combinedOptions[j], q.combinedOptions[r]] = [q.combinedOptions[r], q.combinedOptions[j]];
+            }
+        });
+    }
+}
+
+function startTimer() {
+    clearInterval(timerInterval);
+    let totalSeconds = isComprehensiveExamMode ? Math.min(3600, quiz.length * 36) : quiz.length * 30; 
+    const timerDisplay = document.getElementById("timerDisplay");
+    document.getElementById("timerBox").style.display = "block";
+    
+    function refreshTimerView() {
+        let mins = Math.floor(totalSeconds / 60);
+        let secs = totalSeconds % 60;
+        timerDisplay.textContent = `${mins.toString().padStart(2, '0')}:${secs.toString().padStart(2, '0')}`;
+    }
+    
+    refreshTimerView();
+    timerInterval = setInterval(() => {
+        totalSeconds--;
+        if(totalSeconds <= 0) { clearInterval(timerInterval); showResult(); } else { refreshTimerView(); }
+    }, 1000);
+}
+
+function getFlaggedTexts() { return JSON.parse(localStorage.getItem(STORAGE_PREFIX + "flagged_questions") || "[]"); }
+
+function speakQuestion() {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel(); 
+        let structuredText = `Question number ${i + 1}: ${quiz[i].q}. `;
+        quiz[i].combinedOptions.forEach((opObj, idx) => { structuredText += `Choice number ${idx + 1}: ${opObj.en}. `; });
+        const utterance = new SpeechSynthesisUtterance(structuredText);
+        utterance.lang = 'en-US'; utterance.rate = 0.88;
+        utterance.onstart = () => {
+            const stopBtn = document.getElementById("stopSpeakBtn");
+            stopBtn.style.display = "inline-block"; stopBtn.innerHTML = "⏸️";
+        };
+        const resetAudioUI = () => { document.getElementById("stopSpeakBtn").style.display = "none"; };
+        utterance.onend = resetAudioUI; utterance.onerror = resetAudioUI;
+        window.speechSynthesis.speak(utterance);
+    }
+}
+
+function toggleSpeechPause() {
+    if ('speechSynthesis' in window) {
+        const stopBtn = document.getElementById("stopSpeakBtn");
+        if (window.speechSynthesis.speaking) {
+            if (window.speechSynthesis.paused) { window.speechSynthesis.resume(); stopBtn.innerHTML = "⏸️"; } 
+            else { window.speechSynthesis.pause(); stopBtn.innerHTML = "▶️"; }
+        }
+    }
+}
+
+function forceStopSpeechEngine() {
+    if ('speechSynthesis' in window) {
+        window.speechSynthesis.cancel();
+        const stopBtn = document.getElementById("stopSpeakBtn");
+        if (stopBtn) stopBtn.style.display = "none";
+    }
+}
+
+function toggleTranslation() {
+    const tBox = document.getElementById("translationBox");
+    tBox.style.display = (tBox.style.display === "block") ? "none" : "block";
+}
+
+function selectRootMode(rootMode) {
+    const mainMenu = document.getElementById("mainModeMenu");
+    const lecturesSetup = document.getElementById("lecturesSetupContainer");
+    
+    if (rootMode === 'lectures') {
+        mainMenu.style.display = "none";
+        lecturesSetup.style.display = "block";
+        isComprehensiveExamMode = false;
+        checkSavedProgress();
+        showHighScore();
+    } else if (rootMode === 'main') {
+        mainMenu.style.display = "flex";
+        lecturesSetup.style.display = "none";
+        isComprehensiveExamMode = false;
+    } else if (rootMode === 'comprehensive_exam') {
+        isComprehensiveExamMode = true;
+        currentMode = 'exam';
+        startComprehensiveExamSession();
+    }
+}
+
+function startComprehensiveExamSession() {
+    let allMergedQuestions = [];
+    
+    Object.keys(datasets).forEach(key => {
+        if (Array.isArray(datasets[key]) && datasets[key].length > 0) {
+            datasets[key].forEach(q => {
+                allMergedQuestions.push(JSON.parse(JSON.stringify(q)));
+            });
+        }
+    });
+
+    if (allMergedQuestions.length === 0) {
+        alert("لا توجد أسئلة متوفرة في قاعدة البيانات الحالية!");
+        selectRootMode('main');
+        return;
+    }
+
+    const targetExamCount = Math.min(100, allMergedQuestions.length);
+    let examPool = [];
+    try { examPool = JSON.parse(localStorage.getItem(STORAGE_PREFIX + "exam_pool") || "[]"); } catch (e) { examPool = []; }
+
+    const validQuestionTexts = new Set(allMergedQuestions.map(q => q.q));
+    examPool = Array.isArray(examPool) ? examPool.filter(q => validQuestionTexts.has(q.q)) : [];
+
+    const savedTotalCount = parseInt(localStorage.getItem(STORAGE_PREFIX + "exam_pool_total") || "0", 10);
+    if (savedTotalCount !== allMergedQuestions.length || examPool.length < targetExamCount) {
+        examPool = [...allMergedQuestions];
+        for (let idx = examPool.length - 1; idx > 0; idx--) {
+            const randomIdx = Math.floor(Math.random() * (idx + 1));
+            [examPool[idx], examPool[randomIdx]] = [examPool[randomIdx], examPool[idx]];
+        }
+        localStorage.setItem(STORAGE_PREFIX + "exam_pool_total", String(allMergedQuestions.length));
+    }
+
+    quiz = examPool.slice(0, targetExamCount);
+    let remainingPool = examPool.slice(targetExamCount);
+    localStorage.setItem(STORAGE_PREFIX + "exam_pool", JSON.stringify(remainingPool));
+
+    quiz.forEach(q => {
+        q.combinedOptions = q.o.map((enText, idx) => ({
+            en: enText,
+            ar: q.trO && q.trO[idx] ? q.trO[idx] : ""
+        }));
+        for (let j = q.combinedOptions.length - 1; j > 0; j--) {
+            const r = Math.floor(Math.random() * (j + 1));
+            [q.combinedOptions[j], q.combinedOptions[r]] = [q.combinedOptions[r], q.combinedOptions[j]];
+        }
+    });
+
+    answers = new Array(quiz.length).fill(null);
+    i = 0; score = 0;
+    localStorage.removeItem(STORAGE_PREFIX + "quiz_progress");
+
+    midNav.innerHTML = "";
+    quiz.forEach((_, idx) => {
+      const b = document.createElement("button");
+      b.textContent = idx + 1; b.className = "q-btn";
+      b.onclick = () => { i = idx; load(); };
+      midNav.appendChild(b);
+    });
+
+    startCard.style.display = "none"; 
+    quizContainer.style.display = "block";
+    startTimer();
+    load();
+}
+
+function startQuiz() {
+    let selectedBank = [];
+
+    if (currentDataset === 'all') {
+        Object.keys(datasets).forEach(key => {
+            if (Array.isArray(datasets[key]) && datasets[key].length > 0) {
+                selectedBank = selectedBank.concat(datasets[key]);
+            }
+        });
+        selectedBank = JSON.parse(JSON.stringify(selectedBank));
+    } else {
+        selectedBank = JSON.parse(JSON.stringify(datasets[currentDataset] || []));
+    }
+
+    if(selectedBank.length === 0) {
+        alert("لا توجد أسئلة متوفرة في هذا القسم حالياً!");
+        return;
+    }
+
+    if (currentMode === 'bookmark') {
+        let flagged = getFlaggedTexts();
+        quiz = selectedBank.filter(q => flagged.includes(q.q));
+        if (quiz.length === 0) {
+            alert("❌ لا توجد أسئلة مميزة بـ 🔖 في هذا القسم!");
+            return;
+        }
+        prepareQuizData(false);
+        localStorage.removeItem(STORAGE_PREFIX + "quiz_progress");
+    } else if(!isReviewMode) {
+        quiz = selectedBank;
+        let doShuffle = (currentMode !== 'sequential' && currentMode !== 'memorize');
+        prepareQuizData(doShuffle); 
+        localStorage.removeItem(STORAGE_PREFIX + "quiz_progress"); 
+    }
+    answers = new Array(quiz.length).fill(null);
+    
+    midNav.innerHTML = "";
+    quiz.forEach((_, idx) => {
+      const b = document.createElement("button");
+      b.textContent = idx + 1; b.className = "q-btn";
+      b.onclick = () => { i = idx; load(); };
+      midNav.appendChild(b);
+    });
+
+    startCard.style.display = "none"; quizContainer.style.display = "block";
+    if(currentMode === 'exam') { startTimer(); } else { document.getElementById("timerBox").style.display = "none"; }
+    load();
+}
+
+function updateMidNav(){
+  let flagged = getFlaggedTexts();
+  document.querySelectorAll(".q-btn").forEach((el,idx)=>{
+    el.classList.remove("active","correct","wrong","answered-exam","flagged");
+    if(idx===i) el.classList.add("active");
+    if(quiz[idx] && flagged.includes(quiz[idx].q)) el.classList.add("flagged");
+    
+    if(quiz[idx] && quiz[idx].userPick !== undefined) {
+        if(isComprehensiveExamMode || currentMode === 'exam') { 
+            el.classList.add("answered-exam"); 
+        } else if(currentMode === 'study' || currentMode === 'sequential' || currentMode === 'bookmark' || currentMode === 'memorize') {
+            if(answers[idx]===true) el.classList.add("correct");
+            if(answers[idx]===false) el.classList.add("wrong");
+        }
+    }
+  });
+}
+
+function toggleFlag() {
+    if(quiz[i]) {
+        let flagged = getFlaggedTexts();
+        const qText = quiz[i].q;
+        if(flagged.includes(qText)) {
+            flagged = flagged.filter(t => t !== qText); quiz[i].isFlagged = false;
+        } else {
+            flagged.push(qText); quiz[i].isFlagged = true;
+        }
+        localStorage.setItem(STORAGE_PREFIX + "flagged_questions", JSON.stringify(flagged));
+        document.getElementById("flagBtn").classList.toggle("active", quiz[i].isFlagged);
+        updateMidNav(); saveProgress();
+    }
+}
+
+function load(){
+  if(quiz.length === 0) return;
+  clearTimeout(autoAdvanceTimeout); forceStopSpeechEngine(); 
+  document.getElementById("translationBox").style.display = "none";
+
+  const qCard = document.getElementById("quizCard");
+  qCard.style.animation = 'none'; qCard.offsetHeight; 
+  qCard.style.animation = 'popIn 0.4s cubic-bezier(0.34, 1.56, 0.64, 1)';
+
+  let qText = quiz[i].q;
+  if (currentMode === 'memorize' && quiz[i].kw) {
+      const safeKw = quiz[i].kw.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const regex = new RegExp(`(${safeKw})`, 'gi');
+    
+      qText = qText.replace(regex, `<span class="kw-highlight">$1</span>`);
+  }
+  
+  qDiv.innerHTML = qText;
+  document.getElementById("qIndexBadge").textContent = `Q: ${i + 1} / ${quiz.length}`;
+  
+  const correctIdx = quiz[i].combinedOptions.findIndex(opt => opt.en === quiz[i].o[quiz[i].a]);
+  const transBtn = document.getElementById("translateBtn");
+  
+  if(quiz[i].trQ) {
+      transBtn.style.display = "inline-block";
+      document.getElementById("transQText").textContent = quiz[i].trQ;
+      const transOList = document.getElementById("transOList"); transOList.innerHTML = "";
+      quiz[i].combinedOptions.forEach(optObj => {
+          if(optObj.ar) { const li = document.createElement("li"); li.textContent = optObj.ar; transOList.appendChild(li); }
+      });
+  } else { transBtn.style.display = "none"; }
+  
+  let flagged = getFlaggedTexts();
+  quiz[i].isFlagged = flagged.includes(quiz[i].q);
+  document.getElementById("flagBtn").classList.toggle("active", !!quiz[i].isFlagged);
+  
+  oDiv.innerHTML=""; progress.style.width=((i+1)/quiz.length)*100+"%"; updateMidNav();
+  
+  quiz[i].combinedOptions.forEach((opObj,idx)=>{
+    const b = document.createElement("button"); b.textContent = opObj.en;
+    
+    if (currentMode === 'memorize' && quiz[i].userPick === undefined) {
+        if (idx === correctIdx) { b.classList.add("correct"); b.style.borderWidth = "3px"; } 
+        else { b.style.opacity = "0.4"; b.disabled = true; }
+    }
+    if(quiz[i].userPick !== undefined) {
+        b.disabled=true;
+        if(isComprehensiveExamMode) {
+            if(idx === quiz[i].userPick) b.classList.add("selected-exam");
+        } else if(currentMode === 'study' || currentMode === 'sequential' || currentMode === 'bookmark' || currentMode === 'memorize') {
+            if(idx===correctIdx) b.classList.add("correct");
+            else if(idx === quiz[i].userPick) b.classList.add("wrong");
+        } else { if(idx === quiz[i].userPick) b.classList.add("selected-exam"); }
+    }
+    b.onclick=()=>answer(idx,b); oDiv.appendChild(b);
+  });
+}
+
+function answer(idx,btn){
+  if(quiz[i].userPick !== undefined) return;
+  quiz[i].userPick = idx;
+  document.querySelectorAll(".options button").forEach(b=>b.disabled=true);
+  const correctIdx = quiz[i].combinedOptions.findIndex(opt => opt.en === quiz[i].o[quiz[i].a]);
+  
+  if(isComprehensiveExamMode) {
+      btn.classList.add("selected-exam"); playAudioTone('click'); triggerHaptic('click');
+      autoAdvanceTimeout = setTimeout(() => { nextQ(); }, 150);
+  } else if(currentMode === 'study' || currentMode === 'sequential' || currentMode === 'bookmark' || currentMode === 'memorize') {
+      if(idx===correctIdx){
+        btn.classList.add("correct"); answers[i]=true; score++;
+        playAudioTone('correct'); triggerHaptic('correct');
+        autoAdvanceTimeout = setTimeout(() => { nextQ(); }, 1200); 
+      }else{
+        btn.classList.add("wrong"); btn.classList.add("shake-anim"); 
+        oDiv.children[correctIdx].classList.add("correct"); answers[i]=false;
+        playAudioTone('wrong'); triggerHaptic('wrong');
+      }
+  } else { btn.classList.add("selected-exam"); playAudioTone('click'); triggerHaptic('click'); }
+  updateMidNav(); saveProgress();
+}
+
+function nextQ(){ if(i<quiz.length-1){i++;load()} else showResult(); }
+function prevQ(){ if(i>0){i--;load()} }
+
+function goToHome() {
+    clearInterval(timerInterval); forceStopSpeechEngine(); saveProgress(); 
+    quizContainer.style.display = "none"; startCard.style.display = "block";
+    isReviewMode = false;
+    
+    if(isComprehensiveExamMode) { selectRootMode('main'); } else { selectRootMode('lectures'); }
+}
+
+function saveProgress() {
+    if(isReviewMode || isComprehensiveExamMode) return; 
+    const dataToSave = { quiz: quiz, answers: answers, i: i, score: score, currentMode: currentMode, currentDataset: currentDataset };
+    localStorage.setItem(STORAGE_PREFIX + "quiz_progress", JSON.stringify(dataToSave));
+}
+
+function checkSavedProgress() {
+    if(localStorage.getItem(STORAGE_PREFIX + "quiz_progress") && !isComprehensiveExamMode) { document.getElementById("resumeBtn").style.display = "block"; } 
+    else { document.getElementById("resumeBtn").style.display = "none"; }
+}
+
+function showHighScore() {
+    let modeKey = isComprehensiveExamMode ? STORAGE_PREFIX + "high_score_comprehensive" : STORAGE_PREFIX + "high_score_" + currentDataset + "_" + currentMode;
+    let highScore = localStorage.getItem(modeKey);
+    const hsView = document.getElementById("highScoreView");
+    if(highScore !== null) {
+        let modeName = "";
+        if(isComprehensiveExamMode) modeName = "(الامتحان الشامل)";
+        else if(currentMode === 'sequential') modeName = "(الترتيب)";
+        else if(currentMode === 'study') modeName = "(المذاكرة)";
+        else if(currentMode === 'exam') modeName = "(الامتحان)";
+        else if(currentMode === 'bookmark') modeName = "(المميزة)";
+        else if(currentMode === 'memorize') modeName = "(البصمجة)";
+        
+        document.getElementById("highScoreVal").textContent = isComprehensiveExamMode ? highScore + "% " + modeName : highScore + "% " + modeName + " - " + getDatasetLabel(currentDataset);
+        hsView.style.display = "block";
+    } else { hsView.style.display = "none"; }
+}
+
+function resumeQuiz() {
+    const savedData = localStorage.getItem(STORAGE_PREFIX + "quiz_progress");
+    if(!savedData) return;
+    const parsedData = JSON.parse(savedData);
+    quiz = parsedData.quiz; answers = parsedData.answers; i = parsedData.i; score = parsedData.score; currentMode = parsedData.currentMode; currentDataset = parsedData.currentDataset || 'place1';
+    isComprehensiveExamMode = false;
+
+    document.querySelectorAll('input[name="quizMode"]').forEach(radio => { if(radio.value === currentMode) radio.checked = true; });
+    if(document.getElementById("datasetDrawer")) document.getElementById("datasetDrawer").value = currentDataset;
+    
+    midNav.innerHTML = "";
+    quiz.forEach((_, idx) => {
+      const b = document.createElement("button"); b.textContent = idx + 1; b.className = "q-btn";
+      b.onclick = () => { i = idx; load(); }; midNav.appendChild(b);
+    });
+    startCard.style.display = "none"; quizContainer.style.display = "block";
+    if(currentMode === 'exam') { startTimer(); } else { document.getElementById("timerBox").style.display = "none"; }
+    load();
+}
+
+function showResult(){
+  clearInterval(timerInterval); forceStopSpeechEngine();
+  localStorage.removeItem(STORAGE_PREFIX + "quiz_progress"); 
+  document.getElementById("timerBox").style.display = "none";
+  quizContainer.style.display="none"; resultCard.style.display="block";
+  
+  if(currentMode === 'exam' || isComprehensiveExamMode) {
+      score = 0;
+      quiz.forEach((q) => { 
+          const correctIdx = q.combinedOptions.findIndex(opt => opt.en === q.o[q.a]);
+          if(q.userPick === correctIdx) score++; 
+      });
+  }
+  const wrongCount = quiz.length - score;
+  const accuracyRatio = Math.round((score / quiz.length) * 100);
+  
+  if (!isReviewMode) {
+      let modeKey = isComprehensiveExamMode ? STORAGE_PREFIX + "high_score_comprehensive" : STORAGE_PREFIX + "high_score_" + currentDataset + "_" + currentMode;
+      let savedHighScore = parseInt(localStorage.getItem(modeKey)) || 0;
+      if(!isNaN(accuracyRatio) && accuracyRatio > savedHighScore) { localStorage.setItem(modeKey, accuracyRatio); }
+  }
+  
+  document.getElementById("statCorrect").textContent = score;
+  document.getElementById("statWrong").textContent = wrongCount;
+  document.getElementById("statRatio").textContent = isNaN(accuracyRatio) ? "0%" : accuracyRatio + "%";
+  scoreText.textContent=`${score} / ${quiz.length}`;
+  
+  const bTitle = document.getElementById("badgeTitle");
+  if(accuracyRatio >= 95) bTitle.textContent = "👑 Master of Pediatric Nursing";
+  else if(accuracyRatio >= 80) bTitle.textContent = "🧸 Pediatric Care Hero";
+  else if(accuracyRatio >= 50) bTitle.textContent = "💡 Smart Nurse";
+  else bTitle.textContent = "💪 Keep Fighting, Future Nurse";
+  
+  document.getElementById("reviewBtn").style.display = wrongCount > 0 ? "inline-block" : "none";
+  if(score >= (quiz.length / 2) && quiz.length > 0) {
+    var duration = 3 * 1000; var end = Date.now() + duration;
+    (function frame() {
+      confetti({ particleCount: 4, angle: 60, spread: 55, origin: { x: 0, y: 0.7 } });
+      confetti({ particleCount: 4, angle: 120, spread: 55, origin: { x: 1, y: 0.7 } });
+      if (Date.now() < end) { requestAnimationFrame(frame); }
+    }());
+  }
+}
+
+function startReview() {
+    let wrongQuestions = quiz.filter(q => {
+        const correctIdx = q.combinedOptions.findIndex(opt => opt.en === q.o[q.a]);
+        return q.userPick !== correctIdx;
+    });
+    if(wrongQuestions.length === 0) return;
+    quiz = JSON.parse(JSON.stringify(wrongQuestions));
+    quiz.forEach(q => { delete q.userPick; delete q.isFlagged; }); 
+    isReviewMode = true; i = 0; score = 0; currentMode = 'study';
+    prepareQuizData(false); resultCard.style.display = "none"; startQuiz();
+}
+
+function downloadResultCard() {
+    const dBtn = document.getElementById("downloadBtn");
+    const containerActionButtons = document.querySelector(".result-actions-container");
+    dBtn.textContent = "⏳ Generating Image..."; dBtn.disabled = true;
+    containerActionButtons.style.display = "none"; 
+    const currentTheme = document.documentElement.getAttribute('data-theme') || 'light';
+    const bgColor = currentTheme === 'dark' ? '#0f172a' : '#f1f5f9';
+    
+    html2canvas(document.querySelector(".container"), {
+        backgroundColor: bgColor, scale: 2, useCORS: true, allowTaint: true,
+        onclone: (clonedDoc) => { clonedDoc.documentElement.setAttribute('data-theme', currentTheme); }
+    }).then(canvas => {
+        const downloadLink = document.createElement("a"); downloadLink.download = `TheCodingNurse_Pediatric_Score.png`;
+        downloadLink.href = canvas.toDataURL("image/png"); downloadLink.click();
+        containerActionButtons.style.display = "flex"; dBtn.textContent = "📸 تحميل النتيجة كصورة"; dBtn.disabled = false;
+    }).catch(err => {
+        containerActionButtons.style.display = "flex"; dBtn.textContent = "📸 تحميل النتيجة كصورة"; dBtn.disabled = false;
+    });
+}
+
+function restartQuiz(){
+  i=0; score=0; isReviewMode = false; clearInterval(timerInterval); forceStopSpeechEngine();
+  localStorage.removeItem(STORAGE_PREFIX + "quiz_progress");
+  document.getElementById("resumeBtn").style.display = "none";
+  resultCard.style.display="none"; startCard.style.display="block";
+  selectRootMode('main');
+}
+
+window.onload = function() { 
+    const drawer = document.getElementById("datasetDrawer");
+    if(drawer) { currentDataset = drawer.value || 'place1'; }
+    selectRootMode('main'); 
+};
+</script>
+</body>
+</html>
